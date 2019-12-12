@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Afar">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Afar">
+    
+    <meta name="keywords" content="R语言,卫生统计学,摄影">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>「棠棣之华」中的历史典故 · Star Afar</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >AfarX</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">「棠棣之华」中的历史典故</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>AfarX</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/Dandelion.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            「棠棣之华」中的历史典故
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "未完待续">未完待续</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "棠棣之华">棠棣之华</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">7.4k</span>阅读时长: <span class="post-count reading-time">27 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/02/20</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <hr>
+<p>所有典故引用于橙光游戏<strong>棠棣之华</strong>。<br>作者：<strong>枉却东风</strong><br>游戏地址：<a href="http://www.66rpg.com/game/13639" target="_blank" rel="noopener">http://www.66rpg.com/game/13639</a></p>
+<hr>
+<p><code>萧荣：长女萧书语，时太学博士。</code></p>
+<h1 id="太学"><a href="#太学" class="headerlink" title="太学"></a>太学</h1><p><strong>古代国立大学</strong>，始于西周，五帝时称为成均，汉代太学的建立，标志着我国封建官立大学制度的确立。唐代为国子监。<strong>太学的教授称博士，其主要职责是掌教弟子 、以教学为主。</strong><br>唐代国子监，有国子学、太学、四门学、律学、书学、算学。学校的差别，与学生资荫(即父祖官爵)身份有关。国子学、太学、四门学分别面向三品、五品、七品以上官僚子弟，律学、书学、算学则面向八品以下子弟及庶人。此外，国子生、太学生、四门生学习儒家经典，律学、书学、算学学生则学习专门技术。国子学生员三百人，太学五百人，四门学一千三百人，律学五十人，书学、算学三十人。入学年龄为十四岁至十九岁，律学则为十八岁至二十五岁。高宗龙朔二年(公元662年)，又在东都洛阳设立了一个国子监，与长安国子监合称“两监”。<br><a id="more"></a><br>国子监长官为国子祭酒，主持政务。下设司业为副，及丞(掌判监事)、主簿(掌印)、录事。诸学有博士、助教、典学、直讲等学官，掌教学。国子生、太学生、四门生入学后，要根据将来考进士科还是考明经而分科学习。所习儒家经典分为大中小三种，《礼记》、《左传》为大经，《诗经》、《周礼》、《仪礼》为中经，《易经》、《尚书》、《公羊传》、《谷梁传》为小经。通三经者，大、中、小经各一；通五经者，大经皆通，余经各一；《孝经》、《论语》则都要掌握。这与进士、明经科的考试要求，基本一致。学校每岁向礼部荐送参加科举考试者。如学业不佳而多年不堪荐送，或荐送后屡年落第，则往往要被学校解退除名。<br>唐代前期，进士及第而享文名者，大多由两监生徒出身。主考官在取舍中，也有意偏重生徒。时进士不由两监出身，则深以为耻。唐玄宗李隆基曾下令，天下举人皆补学校。但安史之乱后，由于政治混乱及财政困难，学校由盛入衰，生员不及旧日三、四分之一，太学、四门学的入学资格只好降低，生徒在应科举者中的比例亦大为减少。<br>东汉时，太学博士的经济、政治地位均较高。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%A4%AA%E5%AD%A6/819327" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%A4%AA%E5%AD%A6/819327</a></p>
+</blockquote>
+<hr>
+<p><code>薛硕贞曜四年任尚书左丞。</code></p>
+<h1 id="尚书左丞"><a href="#尚书左丞" class="headerlink" title="尚书左丞"></a>尚书左丞</h1><p><strong>尚书左丞佐尚书令，总领纲纪；右丞佐仆射，掌钱谷等事，秩均四百石。历代沿置，为尚书令及仆射的属官，品级逐渐提高，隋、唐时至正四品。</strong></p>
+<h2 id="尚书省"><a href="#尚书省" class="headerlink" title="尚书省"></a>尚书省</h2><p>尚书令一人，正二品，掌典领百官。<br>左右仆射各一人，从二品，掌统理六官，为令之贰，令阙则总省事，劾御史纠不当者。<br>左丞一人，正四品上；右丞一人，正四品下。掌辩六官之仪，纠正省内，劾御史举不当者。吏部、户部、礼部，左丞总焉；兵部、刑部、工部，右丞总焉。郎中各一人，从五品上；员外郎各一人，从六品上。<br>都事各六人，从七品上；主事各六人，从八品下。吏部考功、礼部主书皆如之。诸司主事，从九品上。有令史各十八人，书令史各三十六人，亭长各六人，掌固各十四人。</p>
+<blockquote>
+<p><a href="http://www.baike.com/wiki/%E5%B0%9A%E4%B9%A6%E5%8F%B3%E4%B8%9E" target="_blank" rel="noopener">http://www.baike.com/wiki/%E5%B0%9A%E4%B9%A6%E5%8F%B3%E4%B8%9E</a></p>
+</blockquote>
+<hr>
+<p><code>第二天下午三哥看的书</code></p>
+<h1 id="穆天子传"><a href="#穆天子传" class="headerlink" title="穆天子传"></a>穆天子传</h1><p>《穆天子传》主要记载周穆王率领七萃之士﹐驾上赤骥﹑盗骊﹑白义﹑逾轮﹑山子﹑渠黄﹑骅骝﹑绿耳等骏马，由造父赶车，伯夭作向导，<br>从宗周出发，越过漳水，经由河宗﹑阳纡之山﹑群玉山等地，西至于西王母之邦，和西王母宴饮酬酢的故事。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E7%A9%86%E5%A4%A9%E5%AD%90%E4%BC%A0" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%A9%86%E5%A4%A9%E5%AD%90%E4%BC%A0</a></p>
+</blockquote>
+<hr>
+<p><code>第一天上午找三哥，三哥新得《瘗鹤铭》拓片。</code></p>
+<h1 id="瘗鹤铭"><a href="#瘗鹤铭" class="headerlink" title="瘗鹤铭"></a>瘗鹤铭</h1><p>瘗（yì）鹤铭：<br>素称“书法之山”的镇江焦山，历代书法家的碑刻甚多，其中不少是珍品，最著者为宝墨轩碑林中被誉为“碑中之王”的《瘗鹤铭》，署名为“<strong>华阳真逸</strong>撰，上皇山樵正书。”这是一篇哀悼家鹤的纪念文章，内容虽不足道，而其书法艺术诚然可贵。<br>凡是历史上有名字的书法家都在这里留下了书法摩崖石刻，并拓了此铭而去。后来遭雷击滑坡，碑文下半截落入江中，再后来，上半段也消失了，传世的拓片多为伪作。<br>铭字连笔圆润，<strong>落笔超逸，神采脱俗</strong>。—-《古代碑帖鉴赏》费声骞</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E7%98%97%E9%B9%A4%E9%93%AD/6678052" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%98%97%E9%B9%A4%E9%93%AD/6678052</a></p>
+</blockquote>
+<hr>
+<p><code>第一天上午和三哥讨论完拓片后，一直聊到钟繇、卫觊.</code></p>
+<h1 id="钟繇、卫觊"><a href="#钟繇、卫觊" class="headerlink" title="钟繇、卫觊"></a>钟繇、卫觊</h1><ul>
+<li>钟繇（yáo）：<br>三国时期曹魏著名书法家、政治家。钟繇擅篆、隶、真、行、草多种书体，在书法方面颇有造诣，推动了楷书（小楷）的发展，被后世尊为“<strong>楷书鼻祖</strong>”。<br><a href="https://baike.baidu.com/item/%E5%8D%AB%E8%A7%8A" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%8D%AB%E8%A7%8A</a></li>
+<li>卫觊：<br>曹魏能昭扬后世的书家，除钟繇外，也只有卫觊能与之并驾齐驱了。《书小史》谓其善古文、篆、隶及草书。<blockquote>
+<ul>
+<li><a href="https://baike.baidu.com/item/%E9%92%9F%E7%B9%87/5865" target="_blank" rel="noopener">https://baike.baidu.com/item/%E9%92%9F%E7%B9%87/5865</a></li>
+</ul>
+</blockquote>
+</li>
+<li><a href="https://baike.baidu.com/item/%E5%8D%AB%E8%A7%8A" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%8D%AB%E8%A7%8A</a></li>
+</ul>
+<hr>
+<p><code>第一天上午显德殿讨论蔺相如</code></p>
+<h1 id="渑池之功"><a href="#渑池之功" class="headerlink" title="渑池之功"></a>渑池之功</h1><p>渑（miǎn）池之功：<br>成语，出自《史记·廉颇蔺相如列传》。渑池：古城名，在今河南渑池县南。本指战国时赵国蔺相如在渑池会上不畏秦王，为赵国立下功勋。后泛指为国立下巨大功勋。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E6%B8%91%E6%B1%A0%E4%B9%8B%E5%8A%9F" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%B8%91%E6%B1%A0%E4%B9%8B%E5%8A%9F</a></p>
+</blockquote>
+<hr>
+<p><code>第一天下午苏淑妃表示结草衔环报太子恩</code></p>
+<h1 id="结草衔环"><a href="#结草衔环" class="headerlink" title="结草衔环"></a>结草衔环</h1><p>旧时比喻感恩报德，至死不忘。后世用结草衔环代指<strong>报恩</strong>。<br>结草与衔环都是古代报恩的传说。前者讲一个士大夫将其父的爱妾另行嫁人,不使殉葬,爱妾已死去的父亲为替女儿报恩,将地上野草缠成乱结,绊倒恩人的敌手而取胜;后者讲有个儿童挽救了一只受困黄雀的性命,黄雀衔来白环四枚,声言此环可保恩人世代子子洁白,身居高位。后将二典故合成一句,比喻受人恩惠,定当厚报,生死不渝。也说“衔环结草”</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E7%BB%93%E8%8D%89%E8%A1%94%E7%8E%AF" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%BB%93%E8%8D%89%E8%A1%94%E7%8E%AF</a></p>
+</blockquote>
+<hr>
+<p><code>第一天下午畅音阁和萧昭容聊古琴</code></p>
+<h1 id="绕梁"><a href="#绕梁" class="headerlink" title="绕梁"></a>绕梁</h1><p>“四大名琴”之一<br>古琴的制作历史悠久，许多名琴都有文字可考，而且具有美妙的琴名与神奇的传说。其中最著名的是<strong>齐桓公的“号钟”、楚庄王的“绕梁”、司马相如的“绿绮”和蔡邕的“焦尾”</strong>。<br>据说“绕梁”是一位叫华元的人献给楚庄王的礼物，其制作年代不详。楚庄王自从得到“绕梁”以后，整天弹琴作乐，陶醉在琴乐之中。有一次，他竟然连续七天不上朝，把国家大事都抛在脑后。王妃樊姬异常焦虑，规劝楚庄王说：“君王，您过于沉沦在音乐中了! 过去，夏桀酷爱‘妹喜’之瑟，而招致了杀身之祸；纣王误听靡靡之音，而失去了江山社稷。现在，君王如此喜爱‘绕梁’之琴，七日不临朝，难道也愿意丧失国家和性命吗？”楚庄王闻言陷入了沉思。他无法抗拒“绕梁”的诱惑，只得忍痛割爱，命人用铁如意去捶琴，琴身碎为数段。从此，万人羡慕的名琴“绕梁”绝响了。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E7%BB%95%E6%A2%81" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%BB%95%E6%A2%81</a></p>
+</blockquote>
+<hr>
+<p><code>第二天上午显德殿宫女议论太子</code></p>
+<h1 id="秦楼楚馆"><a href="#秦楼楚馆" class="headerlink" title="秦楼楚馆"></a>秦楼楚馆</h1><p>“秦楼楚馆”代指烟花之地。</p>
+<p>秦楼用秦国时秦穆公女儿弄玉在楼上吹箫的典故。萧史弄玉既有成佳偶又隐有男女偷情的含义，弄玉所住之楼即凤凰台也被称为秦楼。<br>楚馆则是为了那个“楚王好细腰”。楚灵王筑章华宫，选美人细腰者居之，人称楚馆秦楼楚馆泛指歌舞场所。多指妓院。<br>同义词：勾栏院</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E7%A7%A6%E6%A5%BC%E6%A5%9A%E9%A6%86" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%A7%A6%E6%A5%BC%E6%A5%9A%E9%A6%86</a></p>
+</blockquote>
+<hr>
+<p><code>第二天上午含冰殿宫女议论太子</code></p>
+<h1 id="白龙鱼服"><a href="#白龙鱼服" class="headerlink" title="白龙鱼服"></a>白龙鱼服</h1><p>白龙鱼服：白龙化为鱼在渊中游。，比喻的就是贵人隐藏身分，微服出行，也有时进一步指这样隐瞒身份，恐怕会给自己带来危险。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E7%99%BD%E9%BE%99%E9%B1%BC%E6%9C%8D" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%99%BD%E9%BE%99%E9%B1%BC%E6%9C%8D</a></p>
+</blockquote>
+<hr>
+<p><code>第二天下午太子楚王与大哥讨论</code></p>
+<h1 id="太子少师"><a href="#太子少师" class="headerlink" title="太子少师"></a>太子少师</h1><p>中国古代官名。太子太师、太子太傅、太子太保、太子少师、太子少傅、太子少保，简称“三师”、“三少”，原是天子或太子左右最亲近的人。“师”是传授其知识的，“傅”是监督其行动的，“保”是照管其身体的，即分别是负责君主智育、德育、体育的人。隋唐以后，太子的师傅均以别的官衔任命，“三师”、“三少”公为加官赠官的官衔，没有职事。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%A4%AA%E5%AD%90%E5%B0%91%E5%B8%88/63631" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%A4%AA%E5%AD%90%E5%B0%91%E5%B8%88/63631</a></p>
+</blockquote>
+<hr>
+<p><code>第二天下午太子感慨小七有孙仲谋的气势</code></p>
+<h1 id="孙伯符"><a href="#孙伯符" class="headerlink" title="孙伯符"></a>孙伯符</h1><p>孙策（175年—200年5月5日 ），字伯符，破虏将军孙坚长子、吴大帝孙权长兄。东汉末年割据江东一带的军阀，汉末群雄之一，三国时期孙吴的奠基者之一。《三国演义》称其武勇犹如霸王项羽，绰号“小霸王”。<br>建安五年（200年）4月，正当孙策准备发兵北上之时，在丹徒狩猎中为刺客所伤，不久后身亡，年仅二十六岁。<strong>其弟孙权接掌孙策势力</strong>，并于称帝后，追谥孙策为长沙桓王。</p>
+<blockquote>
+</blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%AD%99%E7%AD%96/17360?fromtitle=%E5%AD%99%E4%BC%AF%E7%AC%A6&amp;fromid=7294974" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%AD%99%E7%AD%96/17360?fromtitle=%E5%AD%99%E4%BC%AF%E7%AC%A6&amp;fromid=7294974</a></p>
+<hr>
+<p><code>第三天下午和三哥讨论端午节目</code></p>
+<h1 id="如埙如篪"><a href="#如埙如篪" class="headerlink" title="如埙如篪"></a>如埙如篪</h1><p>如埙（xūn）如篪（chí）<br>伯氏吹埙，仲氏吹篪。——《小雅·何人斯》<br>伯氏：兄。埙（xūn）：古陶制吹奏乐器，卵形中空，有吹孔。<br>仲：弟。篪（chí）：古竹制乐器，如笛，有八孔。</p>
+<blockquote>
+</blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%AD%99%E7%AD%96/17360?fromtitle=%E5%AD%99%E4%BC%AF%E7%AC%A6&amp;fromid=7294974" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%AD%99%E7%AD%96/17360?fromtitle=%E5%AD%99%E4%BC%AF%E7%AC%A6&amp;fromid=7294974</a></p>
+<hr>
+<p><code>端午家宴皇帝赐予昭容萧书语雍门周所作古曲谱</code></p>
+<h1 id="雍门周"><a href="#雍门周" class="headerlink" title="雍门周"></a>雍门周</h1><p><strong>传说中最早发明琴谱的人</strong></p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E9%9B%8D%E9%97%A8%E5%91%A8" target="_blank" rel="noopener">https://baike.baidu.com/item/%E9%9B%8D%E9%97%A8%E5%91%A8</a></p>
+</blockquote>
+<hr>
+<p><code>太皇太后寿宴吴王赠木芙蓉寿字盆景</code></p>
+<h1 id="拒霜"><a href="#拒霜" class="headerlink" title="拒霜"></a>拒霜</h1><p>拒霜是一种花名。木芙蓉的别称，特点是冬凋夏茂，仲秋开花，耐寒不落。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E6%8B%92%E9%9C%9C/4559257" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%8B%92%E9%9C%9C/4559257</a></p>
+</blockquote>
+<hr>
+<p><code>千秋亭事变楚王查案</code></p>
+<h1 id="五脏庙"><a href="#五脏庙" class="headerlink" title="五脏庙"></a>五脏庙</h1><p>“五脏庙”常常用来代称自己的身体<br>有时也把吃饭称作“祭五脏庙”。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E4%BA%94%E8%84%8F%E5%BA%99" target="_blank" rel="noopener">https://baike.baidu.com/item/%E4%BA%94%E8%84%8F%E5%BA%99</a></p>
+</blockquote>
+<hr>
+<p><code>上巳双燕亭</code></p>
+<h1 id="鳞鸿"><a href="#鳞鸿" class="headerlink" title="鳞鸿"></a>鳞鸿</h1><p>鳞鸿 ，即鱼雁，指书信或信使。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E9%B3%9E%E9%B8%BF/8998106?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E9%B3%9E%E9%B8%BF/8998106?fr=aladdin</a></p>
+</blockquote>
+<hr>
+<p><code>三哥回信</code></p>
+<h1 id="落日屋梁、暮云春树"><a href="#落日屋梁、暮云春树" class="headerlink" title="落日屋梁、暮云春树"></a>落日屋梁、暮云春树</h1><p>春树暮云,表示对远方友人的思念。出处 唐·杜甫《春日忆李白》诗：“渭北春天树，江东日暮云。何时一樽酒，重与细论文。”<br>落月屋梁,比喻对朋友的怀念。 出处：唐·杜甫《梦李白》诗：“落月满屋梁，犹疑照颜色。”</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E6%98%A5%E6%A0%91%E6%9A%AE%E4%BA%91/3356228?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%98%A5%E6%A0%91%E6%9A%AE%E4%BA%91/3356228?fr=aladdin</a><br><a href="https://baike.baidu.com/item/%E8%90%BD%E6%9C%88%E5%B1%8B%E6%A2%81/4374619?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E8%90%BD%E6%9C%88%E5%B1%8B%E6%A2%81/4374619?fr=aladdin</a></p>
+</blockquote>
+<hr>
+<p><code>橘氏与三哥讨论越人歌</code></p>
+<h1 id="庄辛劝诱襄成君"><a href="#庄辛劝诱襄成君" class="headerlink" title="庄辛劝诱襄成君"></a>庄辛劝诱襄成君</h1><p>《越人歌》最早收录于西汉刘向的《说苑》卷十一《善说》第十三则“襄成君始封之日”篇。刘向是汉高祖刘邦之弟楚元王刘交的四世孙，自幼生长楚地，祖上藏书丰富，家学渊源有自，淹通经史，谙熟掌故，成帝时刘向领校中五经秘书，就是负责西汉皇家藏书的整理，借机通览了当时所能见到的最全面的典籍。在校书之余，为了“言得失、陈法戒”，“助观览、补遗阙”，刘向根据皇家所藏和民间流行的书册编著了几部颇具故事性的杂著——《说苑》、《新序》、《列女传》——作为政治教科书呈献给汉成帝刘骜。书中记录了先秦以至秦汉时期许多流行于民间的故事、传说。这些事例的来源和出处，十之八九还可在现存典籍中探讨源流，互相参证；但有一部分却是早已散佚，文献无征，只靠《说苑》等书保留它一点遗文琐语，“襄成君始封之日”便是其中的一篇。需要明确的是，虽然 “襄成君始封之日”篇的原作者已不可知，但可以推断，刘向在记录这则掌故的时候一定参考了其他文献依据，只是可惜前人旧书已经湮没在历史的长河中，从这个意义上，《说苑》保存了这则在文学、历史、语言学、甚至中国古代性学研究中都具有不可估量价值的故事和故事中的《越人歌》是极有意义的。<br>楚大夫庄辛倾慕襄成君的美貌，提出了“把君之手”的非分要求，这种要求说明庄辛对襄成君有同性恋的欲望。襄成君的生平不详。而庄辛正是战国后期楚襄王（公元前298年－前264年在位）朝的大臣，与屈原、宋玉是同时代人。公元前278年，秦将白起攻陷了楚都郢，一举占领了楚国的整个西部，襄王仓皇迁都于陈。当时楚军全线溃败，不再作有组织的抵抗。当襄王向庄辛请教如何收拾残局时，庄辛先给襄王打气：“见兔而顾犬，未为晚也；亡羊而补牢，未为迟也”，成语“亡羊补牢”即来自庄辛这句话。随后襄王封庄辛为阳陵君，命他守卫在淮北的楚地。在故事发生的时候，襄成君刚刚接受了楚王的册封，而庄辛还是大夫，还没有封君，故他对襄成君自称“臣”。古代社会的同性恋模式原则上是依照社会地位的高低决定主动或被动的角色，因此庄辛的举动自然冒犯了襄成君的尊严，傲慢高贵的美男子自然不会对庄大夫有什么好脸色。为了说服襄成君，能言善辩的庄辛给他讲了鄂君子皙的故事。<br>听完楚译的歌词，子皙立即领会了“榜枻越人”的情意，并欣然接受了对方的求爱。“于是鄂君子皙乃揄修袂，行而拥之，举绣被而覆之。”根据子皙做出的暧昧动作，不难想象他和越人之间发生的事情。讲完故事后，庄辛趁热打铁，进一步诱劝襄成君：<br>“鄂君子皙，亲楚王母弟也。官为令尹，爵为执圭，一榜枻越人犹得交欢尽意焉。今君何以逾于鄂君子皙，臣何以独不若榜枻之人，愿把君之手，其不可何也？”</p>
+<blockquote>
+</blockquote>
+<p><a href="https://baike.baidu.com/item/%E8%B6%8A%E4%BA%BA%E6%AD%8C/956789" target="_blank" rel="noopener">https://baike.baidu.com/item/%E8%B6%8A%E4%BA%BA%E6%AD%8C/956789</a></p>
+<hr>
+<p><code>凉州除夕夜</code></p>
+<h1 id="戍主"><a href="#戍主" class="headerlink" title="戍主"></a>戍主</h1><p>古代驻守一地的长官。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E6%88%8D%E4%B8%BB/9826911?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%88%8D%E4%B8%BB/9826911?fr=aladdin</a></p>
+</blockquote>
+<hr>
+<p><code>凉州遇田十万</code></p>
+<h1 id="珠沉沧海，玉韫荆山"><a href="#珠沉沧海，玉韫荆山" class="headerlink" title="珠沉沧海，玉韫荆山"></a>珠沉沧海，玉韫荆山</h1><p>珍珠沉在大海里。比喻人才被埋没。<br>明·吾邱瑞《运甓记·师阃宾贤》：“珠沉沧海，玉韫荆山，剑秽黄埃，奇韬远略运灵台，长狐封豕谁无赖。”</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E7%8F%A0%E6%B2%89%E6%B2%A7%E6%B5%B7/10980617?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%8F%A0%E6%B2%89%E6%B2%A7%E6%B5%B7/10980617?fr=aladdin</a></p>
+</blockquote>
+<hr>
+<p><code>凉州初见崔野平</code></p>
+<h1 id="多闻阙疑，慎言其余，则寡尤。"><a href="#多闻阙疑，慎言其余，则寡尤。" class="headerlink" title="多闻阙疑，慎言其余，则寡尤。"></a>多闻阙疑，慎言其余，则寡尤。</h1><p>春秋·鲁·孔丘《论语·为政》：“多闻阙疑，慎言其余，则寡尤。多见阙殆，慎行其余，则寡悔。言寡尤，行寡悔，禄在其中矣。’”<br>译文：子张向孔子学求官位得俸禄的方法。孔子对他说：“多听，有疑问的地方先予以保留，对其余无疑问的谨慎地说出，这就能减少过失；多看，其余足以自信的部分要谨慎的实行，对其余的无疑问的慎重地实行，这就能减少悔恨。言语上减少过失，行为上减少悔恨，官职俸禄就在里边了。”</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%A4%9A%E9%97%BB%E9%98%99%E7%96%91/6028168?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%A4%9A%E9%97%BB%E9%98%99%E7%96%91/6028168?fr=aladdin</a></p>
+</blockquote>
+<hr>
+<p><code>小浅邀至酒楼</code></p>
+<h1 id="瓜瓞绵绵，螽斯诜诜"><a href="#瓜瓞绵绵，螽斯诜诜" class="headerlink" title="瓜瓞绵绵，螽斯诜诜"></a>瓜瓞绵绵，螽斯诜诜</h1><p>瓜瓞绵绵来源于《诗经》中的《绵》，其首句“绵绵瓜瓞”四字，成为一种祝愿子孙昌盛，兴旺发达的吉祥图画的名称。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E7%93%9C%E7%93%9E%E7%BB%B5%E7%BB%B5/4864750?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%93%9C%E7%93%9E%E7%BB%B5%E7%BB%B5/4864750?fr=aladdin</a><br>【名称】螽斯诜诜<br>【拼音】zhōng sī shēn shēn<br>【解释】螽斯：昆虫；诜诜：形容众多。用以祝贺子孙众多。<br>【出处】《诗经·周南·螽斯》：“螽斯羽，诜诜兮。”<br><a href="https://baike.baidu.com/item/%E5%9B%BD%E9%A3%8E%C2%B7%E5%91%A8%E5%8D%97%C2%B7%E8%9E%BD%E6%96%AF/1798220" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%9B%BD%E9%A3%8E%C2%B7%E5%91%A8%E5%8D%97%C2%B7%E8%9E%BD%E6%96%AF/1798220</a></p>
+</blockquote>
+<hr>
+<p><code>小浅邀至酒楼</code></p>
+<h1 id="回禄"><a href="#回禄" class="headerlink" title="回禄"></a>回禄</h1><p>回禄，相传本为火神之名，后引申指<strong>火灾</strong>，又作“回陆”，见于《国语》、《左传》等。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%9B%9E%E7%A6%84/7289980?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%9B%9E%E7%A6%84/7289980?fr=aladdin</a></p>
+</blockquote>
+<hr>
+<p><code>苏偃受伤</code></p>
+<h1 id="磔刑"><a href="#磔刑" class="headerlink" title="磔刑"></a>磔刑</h1><p>古代一种酷刑，割肉离骨，断肢体，再割断咽喉。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E7%A3%94%E5%88%91/1919316?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%A3%94%E5%88%91/1919316?fr=aladdin</a></p>
+</blockquote>
+<hr>
+<p><code>韩凛取名</code></p>
+<h1 id="国土无双"><a href="#国土无双" class="headerlink" title="国土无双"></a>国土无双</h1><p>指一国独一无二的人才。国士：国中杰出的人物。无双，独一无二，同时代风云人物出类拔萃仅此一人。出自《史记·淮阴侯列传》：“诸将易得耳，至如信者，国士无双。”</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%9B%BD%E5%A3%AB%E6%97%A0%E5%8F%8C/27268" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%9B%BD%E5%A3%AB%E6%97%A0%E5%8F%8C/27268</a></p>
+</blockquote>
+<p><code>进京面圣</code></p>
+<h1 id="樱笋年光"><a href="#樱笋年光" class="headerlink" title="樱笋年光"></a>樱笋年光</h1><p>基本意思是指阳春三月。该词汇出自清 陈维崧 《丁香结·咏竹茹》词：“樱笋年光，饧箫节候。”参见“ 樱笋时 ”。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E6%A8%B1%E7%AC%8B%E5%B9%B4%E5%85%89/6620940?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%A8%B1%E7%AC%8B%E5%B9%B4%E5%85%89/6620940?fr=aladdin</a></p>
+</blockquote>
+<p><code>进京面圣</code></p>
+<h1 id="翁主"><a href="#翁主" class="headerlink" title="翁主"></a>翁主</h1><p>在西汉初年，诸王的女儿被称为翁主。</p>
+<blockquote>
+<p><a href="https://jingyan.baidu.com/article/f79b7cb3061d099144023e26.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/f79b7cb3061d099144023e26.html</a></p>
+</blockquote>
+<p><code>大战前</code></p>
+<h1 id="冠军侯、酒泉"><a href="#冠军侯、酒泉" class="headerlink" title="冠军侯、酒泉"></a>冠军侯、酒泉</h1><p>霍去病(前145或前140—前117)，河东平阳(今山西临汾西南)人，西汉杰出的军事家、统帅。大将军卫青姊卫少儿之子，卫青的外甥。任骠骑将军，被封为冠军侯，与卫青并为大司马。<br>在河西之战期间，汉武帝特地从京城送来一坛美酒，霍去病没有独自享用，而是将酒倒入泉水中，让全军将士饮用，后来，此泉就称为酒泉，当地也就以泉命名。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E9%A9%BA%E8%99%9E/4838284" target="_blank" rel="noopener">https://baike.baidu.com/item/%E9%A9%BA%E8%99%9E/4838284</a></p>
+</blockquote>
+<p><code>驺虞</code></p>
+<h1 id="驺虞"><a href="#驺虞" class="headerlink" title="驺虞"></a>驺虞</h1><p>驺虞是古代中国神话传说中的仁兽，在传说中它是一种虎躯猊首，白毛黑纹，尾巴很长的动物。据说生性仁慈，连青草也不忍心践踏，不是自然死亡的生物不吃。《山海经》卷一二〈海内北经〉：“林氏国有珍兽，大若虎，五彩毕具，尾长于身，名曰驺虞，乘之日行千里”。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E9%A9%BA%E8%99%9E/4838284" target="_blank" rel="noopener">https://baike.baidu.com/item/%E9%A9%BA%E8%99%9E/4838284</a></p>
+</blockquote>
+<p><code>九线落水</code></p>
+<h1 id="《述异记》"><a href="#《述异记》" class="headerlink" title="《述异记》"></a>《述异记》</h1><p>《述异记》由南朝祖冲之所著，主要记载了鬼异的事情。《述异记》是古代小说集，共有两本。一本由南朝齐祖冲之撰，10卷，已失传。另一本由南朝梁任昉撰，2卷，最早见于《崇文总目》小说类，唐以前未见著录。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E8%BF%B0%E5%BC%82%E8%AE%B0/84061?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E8%BF%B0%E5%BC%82%E8%AE%B0/84061?fr=aladdin</a></p>
+</blockquote>
+<p><code>九线落水</code></p>
+<h1 id="《谷梁传》"><a href="#《谷梁传》" class="headerlink" title="《谷梁传》"></a>《谷梁传》</h1><p>《谷梁传》是《谷梁春秋》《春秋谷梁传》的简称。《春秋谷梁传》为儒家经典之一。与《左传》《公羊传》同为解说《春秋》的三传之一。起于鲁隐公元年，终于鲁哀公十四年。<br>《谷梁传》强调必须尊重君王的权威，但不限制王权；君臣各有职分，各有行为准则；主张必须严格对待贵贱尊卑之别，同时希望君王要注意自己的行为。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E8%B0%B7%E6%A2%81%E4%BC%A0/740475?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E8%B0%B7%E6%A2%81%E4%BC%A0/740475?fr=aladdin</a></p>
+</blockquote>
+<p><code>凤凰池讨论宸妃</code></p>
+<h1 id="绝艳易凋-连城易脆"><a href="#绝艳易凋-连城易脆" class="headerlink" title="绝艳易凋 连城易脆"></a>绝艳易凋 连城易脆</h1><p>《昭惠周后诔》是李煜传世作品中最长的一篇；此文作于大周后辞世之后，是为悼念她而作，文章情感真挚、感人肺腑。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E6%98%AD%E6%83%A0%E5%91%A8%E5%90%8E%E8%AF%94" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%98%AD%E6%83%A0%E5%91%A8%E5%90%8E%E8%AF%94</a></p>
+</blockquote>
+<p><code>凤凰池讨论萧书语</code></p>
+<h1 id="沅芷澧兰"><a href="#沅芷澧兰" class="headerlink" title="沅芷澧兰"></a>沅芷澧兰</h1><p>沅芷澧兰，芷，一本作“茝”。澧，一本作“醴”。本指生于沅澧两岸的芳草，后用以比喻高洁的人或事物。出自 《楚辞·九歌·湘夫人》：“沅有芷兮澧有兰。”王逸注：“言沅水之中有盛茂之芷，澧水之内有芬芳之兰，异於众草”。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E6%B2%85%E8%8A%B7%E6%BE%A7%E5%85%B0/1414188?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%B2%85%E8%8A%B7%E6%BE%A7%E5%85%B0/1414188?fr=aladdin</a></p>
+</blockquote>
+<p><code>小满</code></p>
+<h1 id="苦菜秀-糜草死"><a href="#苦菜秀-糜草死" class="headerlink" title="苦菜秀 糜草死"></a>苦菜秀 糜草死</h1><p>小满有三候：一候苦菜秀，在过去，百姓们在这个时候往往以野菜充饥；二候靡草死，全各个地开始步入夏天；三候麦秋至，对于麦子来说，却到了成熟的“秋”。</p>
+<blockquote>
+<p><a href="http://chihe.sohu.com/20130515/n375982443.shtml" target="_blank" rel="noopener">http://chihe.sohu.com/20130515/n375982443.shtml</a></p>
+</blockquote>
+<p><code>立秋</code></p>
+<h1 id="凉风至-白露生"><a href="#凉风至-白露生" class="headerlink" title="凉风至 白露生"></a>凉风至 白露生</h1><p>一候凉风至；<br>二候白露生；<br>三候寒蝉鸣；</p>
+<blockquote>
+<p><a href="http://www.sohu.com/a/162811494_800250" target="_blank" rel="noopener">http://www.sohu.com/a/162811494_800250</a></p>
+</blockquote>
+<p><code>白露</code></p>
+<h1 id="鸿雁来-玄鸟归"><a href="#鸿雁来-玄鸟归" class="headerlink" title="鸿雁来 玄鸟归"></a>鸿雁来 玄鸟归</h1><p>　　在古人的观念中，白露是农历八月的节气。八月是秋季的第二个月份，古人称之为“仲秋”“仲商”“正秋”“中秋”等。据《礼记·月令》记载：“（仲秋之月）盲风至，鸿雁来，玄鸟归，群鸟养羞。”“盲风”，即疾风；“养”，指贮藏；“羞”同馐，即食物。这段话的意思是，八月开始刮大风，大雁从北方飞来，燕子向南飞去，群鸟开始贮藏过冬的食物。</p>
+<blockquote>
+<p><a href="http://www.360doc.com/content/16/0908/15/35835970_589334572.shtml" target="_blank" rel="noopener">http://www.360doc.com/content/16/0908/15/35835970_589334572.shtml</a></p>
+</blockquote>
+<p><code>常平仓走水</code></p>
+<h1 id="常平仓"><a href="#常平仓" class="headerlink" title="常平仓"></a>常平仓</h1><p>　　中国古代政府为调节粮价，储粮备荒以供应官需民食而设置的粮仓。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%B8%B8%E5%B9%B3%E4%BB%93/1059469?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%B8%B8%E5%B9%B3%E4%BB%93/1059469?fr=aladdin</a></p>
+</blockquote>
+<p><code>常平仓走水</code></p>
+<h1 id="加冠"><a href="#加冠" class="headerlink" title="加冠"></a>加冠</h1><p>　　古代男子二十岁行加冠礼，表示成年。 汉刘向 《说苑·修文》：“冠者，所以别成人也……君子始冠，必祝成礼，加冠以厉其心。”后因以“加冠”指满二十岁。 古代男子成年时（二十岁）加冠的礼节。冠礼在宗庙中进行，由父亲主持，并由指定的贵宾给行加冠礼的青年加冠。<br><a href="https://baike.baidu.com/item/%E5%8A%A0%E5%86%A0/1786401?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%8A%A0%E5%86%A0/1786401?fr=aladdin</a></p>
+<p><code>齐王立府</code></p>
+<h1 id="内帑"><a href="#内帑" class="headerlink" title="内帑"></a>内帑</h1><p>　　帑念作tang，第三声，古时又同孥（nu,第二声），指皇帝、皇室的私财、私产。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%86%85%E5%B8%91/784730?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%86%85%E5%B8%91/784730?fr=aladdin</a></p>
+</blockquote>
+<p><code>崔太守</code></p>
+<h1 id="岁杪"><a href="#岁杪" class="headerlink" title="岁杪"></a>岁杪</h1><p>　　年底，也称岁末。《礼记·王制》：“冢宰制国用，必於岁之杪，五谷皆入，然后制国用。” 郑玄 注：“杪，末也。” 唐 白居易 《代书诗一百韵寄微之》：“无憀当岁杪，有梦到天涯。” 宋 叶适 《朝议大夫秘书少监王公墓志铭》：“ 赣 广 间，常以岁杪贩盐。” 黄远庸 《岁暮馀闻》：“归时适值岁杪，乃记此残断之新闻，以还偿此腊尾馀日之笔墨旧债。”</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%B2%81%E6%9D%AA/10810975?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%B2%81%E6%9D%AA/10810975?fr=aladdin</a></p>
+</blockquote>
+<p><code>猜香</code></p>
+<h1 id="西施捧心"><a href="#西施捧心" class="headerlink" title="西施捧心"></a>西施捧心</h1><p>　　指美女病态更加娇美。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E8%A5%BF%E6%96%BD%E6%8D%A7%E5%BF%83/8840925?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E8%A5%BF%E6%96%BD%E6%8D%A7%E5%BF%83/8840925?fr=aladdin</a></p>
+</blockquote>
+<p><code>跃轩</code></p>
+<h1 id="五毒俱全"><a href="#五毒俱全" class="headerlink" title="五毒俱全"></a>五毒俱全</h1><p>　释义：五毒：多指蛇、蝎、蜈蚣、蜥蜴、蟾蜍五种动物， 又指烟、酒等各种嗜好为五毒。1. 指违法乱纪，各种坏事都做。 2. 指样样嗜好都有。 3.指某人什么都会，样样精通。通常用于能干且厉害的人。4、佛家所指的五毒心指贪、嗔、痴、慢、疑五种心。<br><a href="https://baike.baidu.com/item/%E4%BA%94%E6%AF%92%E4%BF%B1%E5%85%A8/4298228?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E4%BA%94%E6%AF%92%E4%BF%B1%E5%85%A8/4298228?fr=aladdin</a></p>
+<p><code>跃轩</code></p>
+<h1 id="太公阴符"><a href="#太公阴符" class="headerlink" title="太公阴符"></a>太公阴符</h1><p>　《太公阴符》属道家一派之书，又称《周书》皆是《太公》一书异名。传说为姜太公所留下的，据说苏秦为读这本书而头悬梁锥刺股，最后挂六国相印而衣锦还乡。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%A4%AA%E5%85%AC%E9%98%B4%E7%AC%A6/5480668?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%A4%AA%E5%85%AC%E9%98%B4%E7%AC%A6/5480668?fr=aladdin</a></p>
+</blockquote>
+<p><code>项擎</code></p>
+<h1 id="和光同尘"><a href="#和光同尘" class="headerlink" title="和光同尘"></a>和光同尘</h1><p>　和光同尘，指不露锋芒，与世无争的平和处世方法。和、同：混合。和光：混合各种光彩；同尘：与尘世相同。本意是道家无为而治思想的体现。出处《道德经》第四章和第五十六章：“挫其锐，解其纷，和其光，同其尘；是谓玄同。”<br>挫其锐，解其纷：意为用虚柔不盈的方式来化解纷扰。和：涵蓄。同：相同，混同。玄同：微妙的同一。<br>指不露锋芒，消解纷争，挫去人们的锋芒，解脱他们的纷争，收敛他们的光耀，混同他们的尘世，这就是深奥的玄同。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%92%8C%E5%85%89%E5%90%8C%E5%B0%98/4557404?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%92%8C%E5%85%89%E5%90%8C%E5%B0%98/4557404?fr=aladdin</a></p>
+</blockquote>
+<p><code>墨香斋</code></p>
+<h1 id="欲其自得之"><a href="#欲其自得之" class="headerlink" title="欲其自得之"></a>欲其自得之</h1><p>孟子曰：“君子深造之以道，欲其自得之也。自得之，则居之安；居之安，则资之深；资之深，则取之左右逢其原，故君子欲其自得之也。”<br>出自 孟子·离娄下 孟子说：“君子要按照正确的方法深造，是想使他自己获得道理。自己获得的道理，就能牢固掌握它；牢固掌握了它，就能积蓄很深；积蓄深了，就能左右逢源取之不尽，所以君子想要自己获得道理。”</p>
+<p><code>访崔珉</code></p>
+<h1 id="夏卿"><a href="#夏卿" class="headerlink" title="夏卿"></a>夏卿</h1><p>《周礼》以夏官司马掌军政，后世因以夏卿为兵部尚书习称。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%A4%8F%E5%8D%BF/1082129?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%A4%8F%E5%8D%BF/1082129?fr=aladdin</a></p>
+</blockquote>
+<p><code>访崔珉</code></p>
+<h1 id="丹可磨而不可夺其色"><a href="#丹可磨而不可夺其色" class="headerlink" title="丹可磨而不可夺其色"></a>丹可磨而不可夺其色</h1><p>“丹可磨而不可夺其色，兰可燔而不可灭其馨，玉可碎而不可改其白，金可销而不可易其刚。”出自北齐·刘昼《刘子·大质》。<br>丹砂可以磨碎，却不能夺去它的赤色；兰花可以焚烧，却不能泯灭它的芳香；美玉可以击碎，却不能改变它的洁白；金子可以熔化，却不能变易它的刚坚。<br>作者用排比的句式，累累如贯珠的比喻，强调说明事物的本质属性不可移易。可用以比喻意志坚定的志士仁人头可断，血可流．但不能使其放弃理想，改变节操。</p>
+<p><code>与杜彻讨论武举</code></p>
+<h1 id="敬陈管见"><a href="#敬陈管见" class="headerlink" title="敬陈管见"></a>敬陈管见</h1><p>意思是恭敬地陈述自己浅陋的见解。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E6%95%AC%E9%99%88%E7%AE%A1%E8%A7%81/10469027?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%95%AC%E9%99%88%E7%AE%A1%E8%A7%81/10469027?fr=aladdin</a></p>
+</blockquote>
+<p><code>长公主</code></p>
+<h1 id="爆炭"><a href="#爆炭" class="headerlink" title="爆炭"></a>爆炭</h1><p>唐代妓女假母的俗称。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E7%88%86%E7%82%AD/10286315?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E7%88%86%E7%82%AD/10286315?fr=aladdin</a></p>
+</blockquote>
+<p><code>九大婚</code></p>
+<h1 id="魏文陈思"><a href="#魏文陈思" class="headerlink" title="魏文陈思"></a>魏文陈思</h1><p>魏文帝曹丕，陈思王曹植<br>公子小白，公子纠<br>伯夷叔齐，<br>班固孟坚，班超定远</p>
+<blockquote>
+<p><a href="https://zhidao.baidu.com/question/872084024447107052.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/872084024447107052.html</a></p>
+</blockquote>
+<p><code>杏园</code></p>
+<h1 id="一饭三遗矢"><a href="#一饭三遗矢" class="headerlink" title="一饭三遗矢"></a>一饭三遗矢</h1><p>战国时期，廉颇为求起用，年老强饭，一饭斗米，赵使因受郭开贿赂，回到赵国邯郸城对赵王假说廉颇坐谈间解三次大便，使赵王以为廉颇年老身衰，不予召用。<br>后遂用“一饭三遗矢、三遗矢”等谓年高体弱；用“廉颇老、老廉颇、廉颇强饭、强饭廉颇”等谓报国心切，未得知遇，或谓老当益壮，英勇不减当年，或表示勉为从事，难以应付；用“郭开金”谓奸佞贿赂作梗，陷害忠良。[1]  矢：通“屎”，粪便。一顿饭的功夫上了三次厕所。形容年老体弱或年老无用。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E4%B8%80%E9%A5%AD%E4%B8%89%E9%81%97%E7%9F%A2/818926?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E4%B8%80%E9%A5%AD%E4%B8%89%E9%81%97%E7%9F%A2/818926?fr=aladdin</a></p>
+</blockquote>
+<p><code>黄河水患</code></p>
+<h1 id="堪舆"><a href="#堪舆" class="headerlink" title="堪舆"></a>堪舆</h1><p>堪，天道；舆，地道。堪舆即风水，中国传统文化之一。《史记》将堪舆家与五行家并行，本有仰观天象，俯察地理之意，后世以之专称看风水的人曰：“堪舆家”，故堪舆在中国民间亦称之为风水。然或有称“堪舆”不只看风水而已，而应分五部份，曰：罗经、玄空学、葬法及形家。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E5%A0%AA%E8%88%86/109018" target="_blank" rel="noopener">https://baike.baidu.com/item/%E5%A0%AA%E8%88%86/109018</a></p>
+</blockquote>
+<p><code>吐蕃</code></p>
+<h1 id="望日"><a href="#望日" class="headerlink" title="望日"></a>望日</h1><p>望日，指月亮圆的那一天。通常指旧历每月之十五日。</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E6%9C%9B%E6%97%A5/6651623?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%9C%9B%E6%97%A5/6651623?fr=aladdin</a></p>
+</blockquote>
+<p><code>晋王府遇成漓</code></p>
+<h1 id="曾子耘瓜"><a href="#曾子耘瓜" class="headerlink" title="曾子耘瓜"></a>曾子耘瓜</h1><p>《曾子耘瓜》是一篇文言文，主要说明了真正孝顺的人并非什么都听父亲的，但是一定要为父亲着想，把握住什么样的选择才是真正为父亲好的，不能陷父亲于不义的道理。</p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2018/02/25/r-book/" title= "R语言学习网站">
+                    <div class="nextTitle">R语言学习网站</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/02/20/td-hidden/" title= "「棠棣之华」中的隐藏剧情">
+                    <div class="prevTitle">「棠棣之华」中的隐藏剧情</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "7J5n7syOetTEwKFjwJYRWfdu-gzGzoHsz",
+        appKey: "Jz6NOCDbn4sJ9M4YQ2rJ5wAb",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:137348666@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/afarx" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#太学"><span class="toc-number">1.</span> <span class="toc-text">太学</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#尚书左丞"><span class="toc-number">2.</span> <span class="toc-text">尚书左丞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#尚书省"><span class="toc-number">2.1.</span> <span class="toc-text">尚书省</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#穆天子传"><span class="toc-number">3.</span> <span class="toc-text">穆天子传</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#瘗鹤铭"><span class="toc-number">4.</span> <span class="toc-text">瘗鹤铭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#钟繇、卫觊"><span class="toc-number">5.</span> <span class="toc-text">钟繇、卫觊</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#渑池之功"><span class="toc-number">6.</span> <span class="toc-text">渑池之功</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结草衔环"><span class="toc-number">7.</span> <span class="toc-text">结草衔环</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#绕梁"><span class="toc-number">8.</span> <span class="toc-text">绕梁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#秦楼楚馆"><span class="toc-number">9.</span> <span class="toc-text">秦楼楚馆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#白龙鱼服"><span class="toc-number">10.</span> <span class="toc-text">白龙鱼服</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#太子少师"><span class="toc-number">11.</span> <span class="toc-text">太子少师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#孙伯符"><span class="toc-number">12.</span> <span class="toc-text">孙伯符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如埙如篪"><span class="toc-number">13.</span> <span class="toc-text">如埙如篪</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#雍门周"><span class="toc-number">14.</span> <span class="toc-text">雍门周</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拒霜"><span class="toc-number">15.</span> <span class="toc-text">拒霜</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五脏庙"><span class="toc-number">16.</span> <span class="toc-text">五脏庙</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#鳞鸿"><span class="toc-number">17.</span> <span class="toc-text">鳞鸿</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#落日屋梁、暮云春树"><span class="toc-number">18.</span> <span class="toc-text">落日屋梁、暮云春树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#庄辛劝诱襄成君"><span class="toc-number">19.</span> <span class="toc-text">庄辛劝诱襄成君</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#戍主"><span class="toc-number">20.</span> <span class="toc-text">戍主</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#珠沉沧海，玉韫荆山"><span class="toc-number">21.</span> <span class="toc-text">珠沉沧海，玉韫荆山</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多闻阙疑，慎言其余，则寡尤。"><span class="toc-number">22.</span> <span class="toc-text">多闻阙疑，慎言其余，则寡尤。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#瓜瓞绵绵，螽斯诜诜"><span class="toc-number">23.</span> <span class="toc-text">瓜瓞绵绵，螽斯诜诜</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回禄"><span class="toc-number">24.</span> <span class="toc-text">回禄</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#磔刑"><span class="toc-number">25.</span> <span class="toc-text">磔刑</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#国土无双"><span class="toc-number">26.</span> <span class="toc-text">国土无双</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#樱笋年光"><span class="toc-number">27.</span> <span class="toc-text">樱笋年光</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#翁主"><span class="toc-number">28.</span> <span class="toc-text">翁主</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#冠军侯、酒泉"><span class="toc-number">29.</span> <span class="toc-text">冠军侯、酒泉</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#驺虞"><span class="toc-number">30.</span> <span class="toc-text">驺虞</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#《述异记》"><span class="toc-number">31.</span> <span class="toc-text">《述异记》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#《谷梁传》"><span class="toc-number">32.</span> <span class="toc-text">《谷梁传》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#绝艳易凋-连城易脆"><span class="toc-number">33.</span> <span class="toc-text">绝艳易凋 连城易脆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#沅芷澧兰"><span class="toc-number">34.</span> <span class="toc-text">沅芷澧兰</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#苦菜秀-糜草死"><span class="toc-number">35.</span> <span class="toc-text">苦菜秀 糜草死</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#凉风至-白露生"><span class="toc-number">36.</span> <span class="toc-text">凉风至 白露生</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#鸿雁来-玄鸟归"><span class="toc-number">37.</span> <span class="toc-text">鸿雁来 玄鸟归</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常平仓"><span class="toc-number">38.</span> <span class="toc-text">常平仓</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#加冠"><span class="toc-number">39.</span> <span class="toc-text">加冠</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内帑"><span class="toc-number">40.</span> <span class="toc-text">内帑</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#岁杪"><span class="toc-number">41.</span> <span class="toc-text">岁杪</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#西施捧心"><span class="toc-number">42.</span> <span class="toc-text">西施捧心</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五毒俱全"><span class="toc-number">43.</span> <span class="toc-text">五毒俱全</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#太公阴符"><span class="toc-number">44.</span> <span class="toc-text">太公阴符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#和光同尘"><span class="toc-number">45.</span> <span class="toc-text">和光同尘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#欲其自得之"><span class="toc-number">46.</span> <span class="toc-text">欲其自得之</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#夏卿"><span class="toc-number">47.</span> <span class="toc-text">夏卿</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#丹可磨而不可夺其色"><span class="toc-number">48.</span> <span class="toc-text">丹可磨而不可夺其色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#敬陈管见"><span class="toc-number">49.</span> <span class="toc-text">敬陈管见</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#爆炭"><span class="toc-number">50.</span> <span class="toc-text">爆炭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#魏文陈思"><span class="toc-number">51.</span> <span class="toc-text">魏文陈思</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一饭三遗矢"><span class="toc-number">52.</span> <span class="toc-text">一饭三遗矢</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#堪舆"><span class="toc-number">53.</span> <span class="toc-text">堪舆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#望日"><span class="toc-number">54.</span> <span class="toc-text">望日</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#曾子耘瓜"><span class="toc-number">55.</span> <span class="toc-text">曾子耘瓜</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 31
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/20</span><a class="archive-post-title" href= "/2018/07/20/Piecewise-regression/" >R语言分段线性回归直线拟合与绘图</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/14</span><a class="archive-post-title" href= "/2018/07/14/nlp/" >微博词频分析报告</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2018/06/17/slogan/" >应援物设计</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href= "/2018/06/07/support/" >应援物种类一览</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2018/05/10/weibo/" >微博点赞评分析及词云生成</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span><a class="archive-post-title" href= "/2018/04/27/Favourites/" >收藏夹整理-20191212更新</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2018/04/04/img-maincolor/" >使用R提取图像主要颜色</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/d3-js/" >D3.JS学习路径</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-css/" >CSS学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-js/" >JavaScript学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-svg/" >SVG学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-html/" >HTML学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/forceNetwork/" >R语言绘制复杂人物网络关系图代码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/comparecc/" >R语言相关系数的差异性检验</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/effectsize/" >R语言中根据effect size计算样本量</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2018/02/28/netViz/" >R语言绘制动态关系网络</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2018/02/28/html-to-github/" >使用Github Pages展示自制html网页</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2018/02/26/Rstudio/" >Rstudio使用快捷键及技巧</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2018/02/26/Rstudio-Github/" >连接Rstudio与Github</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/25</span><a class="archive-post-title" href= "/2018/02/25/ctsem/" >使用R包ctsem构建交叉滞后模型（Cross-lagged Panel Model）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/25</span><a class="archive-post-title" href= "/2018/02/25/r-book/" >R语言学习网站</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2018/02/20/td-history/" >「棠棣之华」中的历史典故</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2018/02/20/td-hidden/" >「棠棣之华」中的隐藏剧情</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2018/02/20/td-poem/" >「棠棣之华」中的诗词</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2018/02/19/add-menu-for-hexo/" >为Hexo模板添加目录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2018/02/19/hexo-code-block/" >Hexo自定义代码块颜色、字体、高亮</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2018/02/19/bulid-blog-2/" >建站札记（二）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2018/02/16/Hexo/" >关于Hexo的一切</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/Consultant/" >统计咨询</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/bulid-blog/" >建站札记（一）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/14</span><a class="archive-post-title" href= "/2018/02/14/My-New-Post/" >Hello，World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="摄影"><span class="iconfont-archer">&#xe606;</span>摄影</span>
+    
+        <span class="sidebar-tag-name" data-tags="读书笔记"><span class="iconfont-archer">&#xe606;</span>读书笔记</span>
+    
+        <span class="sidebar-tag-name" data-tags="未完待续"><span class="iconfont-archer">&#xe606;</span>未完待续</span>
+    
+        <span class="sidebar-tag-name" data-tags="周彦辰"><span class="iconfont-archer">&#xe606;</span>周彦辰</span>
+    
+        <span class="sidebar-tag-name" data-tags="棠棣之华"><span class="iconfont-archer">&#xe606;</span>棠棣之华</span>
+    
+        <span class="sidebar-tag-name" data-tags="吉光片羽"><span class="iconfont-archer">&#xe606;</span>吉光片羽</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="exp+10"><span class="iconfont-archer">&#xe606;</span>exp+10</span>
+    
+        <span class="sidebar-tag-name" data-tags="R"><span class="iconfont-archer">&#xe606;</span>R</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Viz"><span class="iconfont-archer">&#xe606;</span>Viz</span>
+    
+        <span class="sidebar-tag-name" data-tags="君子欲得自取之"><span class="iconfont-archer">&#xe606;</span>君子欲得自取之</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Afar"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->    
+     
+    </body>
+</html>
+
+

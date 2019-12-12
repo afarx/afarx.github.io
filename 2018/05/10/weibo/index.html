@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Afar">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Afar">
+    
+    <meta name="keywords" content="R语言,卫生统计学,摄影">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>微博点赞评分析及词云生成 · Star Afar</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >AfarX</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">微博点赞评分析及词云生成</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>AfarX</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/Dandelion.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            微博点赞评分析及词云生成
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "R">R</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.7k</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/05/10</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <blockquote>
+<p>狂热与孤寂重叠回忆 在无处落脚的人海里<br>你的停靠成为岛屿 成为陆地 成为具体<br>爱你锋利的伤痕 爱你成熟的天真<br>多谢你如此精彩耀眼 做我平淡岁月里星辰</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="新浪微博爬取"><a href="#新浪微博爬取" class="headerlink" title="新浪微博爬取"></a>新浪微博爬取</h1><p>首先将<a href="https://github.com/dataabc/weiboSpider" target="_blank" rel="noopener">weiboSpider</a>下载到本地，然后将自己的cookies和要爬取的微博ID替换上去，就可以用了。</p>
+<p>这里注意一下这段代码的运行环境是python2.7，因为和3.0及以上版本print的语法不同，所以跑的时候要注意一下。</p>
+<h1 id="绘制点赞、转发、评论折线图"><a href="#绘制点赞、转发、评论折线图" class="headerlink" title="绘制点赞、转发、评论折线图"></a>绘制点赞、转发、评论折线图</h1><p>接下来的任务我们用R来完成。（因为python并不会用。）</p>
+<h2 id="加载包"><a href="#加载包" class="headerlink" title="加载包"></a>加载包</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据预处理</span></span><br><span class="line"><span class="keyword">library</span>(tidyverse)</span><br><span class="line"><span class="keyword">library</span>(stringr)</span><br><span class="line"><span class="keyword">library</span>(lubridate)</span><br><span class="line"><span class="keyword">library</span>(plyr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘图</span></span><br><span class="line"><span class="keyword">library</span>(ggplot2)</span><br><span class="line"><span class="keyword">library</span>(ggthemes)</span><br><span class="line"><span class="keyword">library</span>(ggthemr)</span><br><span class="line"><span class="keyword">library</span>(plotly)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 词云</span></span><br><span class="line"><span class="keyword">library</span>(jiebaR)</span><br><span class="line"><span class="keyword">library</span>(wordcloud2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导出</span></span><br><span class="line"><span class="keyword">library</span>(htmltools)</span><br></pre></td></tr></table></figure>
+<h2 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h2><p>然后我们导入之前从微博爬到的数据，我们先看下原来的数据格式。<br><img src="\img\pyexample.png" alt="pyexample"><br>我们可以看到文件由用户信息+原创微博内容组成，原创微博内容是我们需要抓取的内容。</p>
+<p>这里需要注意的是在导入之前，需要在记事本里现将文件保存为UTF-8编码，这样导入R才不会乱码。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读入文件</span></span><br><span class="line">filePath &lt;- <span class="string">'weibo/2013783327.txt'</span> <span class="comment"># 指定文件路径</span></span><br><span class="line">text &lt;- read_lines(filePath,skip=<span class="number">8</span>) <span class="comment"># 跳过用户信息</span></span><br></pre></td></tr></table></figure>
+<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p>我们发现每一条微博内容都是第一行正文，第二行发布时间，第三行是赞转评，我们把它分别提取出来，并储存到数据框中。</p>
+<p>这里遇到的坑首先是list和dataframe的转换，日期型的转到数据框永远是factor，头痛，lubricate包也不能拯救我。后来找到<code>as.Date(as.character.Date(weibodate))</code>这句话感觉世界都好了。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删去空行</span></span><br><span class="line">txt &lt;-  text[text!=<span class="string">""</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提取微博正文</span></span><br><span class="line">seq1 &lt;- seq(<span class="number">1</span>,length(txt),by=<span class="number">3</span>)</span><br><span class="line">weibo &lt;- txt[seq1]</span><br><span class="line"><span class="comment"># list合并为data.frame</span></span><br><span class="line">zw&lt;- do.call(rbind,lapply(weibo, data.frame)) </span><br><span class="line"></span><br><span class="line"><span class="comment"># 提取发表时间</span></span><br><span class="line">seq1 &lt;- seq(<span class="number">2</span>,length(txt),by=<span class="number">3</span>)</span><br><span class="line">weibodate &lt;- txt[seq1] %&gt;% str_replace(.,<span class="string">'发布时间：'</span>,<span class="string">''</span>)</span><br><span class="line">wd&lt;- do.call(rbind,lapply(weibodate, data.frame))</span><br><span class="line"><span class="comment"># factor转日期</span></span><br><span class="line">mydate &lt;- as.Date(as.character.Date(weibodate)) %&gt;% as.data.frame()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提取赞转评</span></span><br><span class="line">seq1 &lt;- seq(<span class="number">3</span>,length(txt),by=<span class="number">3</span>)</span><br><span class="line">weibozzp &lt;- txt[seq1]</span><br><span class="line"><span class="comment"># 导出的文件会有一个‘\t’，我们把它当成一个标识拆分点赞评</span></span><br><span class="line">zzp &lt;- weibozzp %&gt;% </span><br><span class="line">  str_replace (.,<span class="string">'点赞数：'</span>,<span class="string">''</span>) %&gt;%  </span><br><span class="line">  str_replace (.,<span class="string">'转发数：'</span>,<span class="string">''</span>) %&gt;% </span><br><span class="line">  str_replace (.,<span class="string">'评论数：'</span>,<span class="string">''</span>) %&gt;% </span><br><span class="line">  str_split(.,<span class="string">'\t '</span>,<span class="number">3</span>) %&gt;% </span><br><span class="line">  as.data.frame() </span><br><span class="line"><span class="comment"># 转置数据框</span></span><br><span class="line">zzpt &lt;- t(zzp) </span><br><span class="line"><span class="comment"># 这里也存在factor的问题，还是用as.numeric(as.character(x))这样转换两次的语句来解决。</span></span><br><span class="line">zzptt &lt;-apply(zzpt,<span class="number">2</span>,<span class="keyword">function</span>(x)as.numeric(as.character(x))) %&gt;% as.data.frame()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并日期、内容、与转赞评，生成数据集db</span></span><br><span class="line">db &lt;- cbind(zzptt,mydate,zw)</span><br><span class="line">names(db) &lt;- c(<span class="string">'点赞'</span>,<span class="string">'转发'</span>,<span class="string">'评论'</span>,<span class="string">'date'</span>,<span class="string">'content'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="绘制图像"><a href="#绘制图像" class="headerlink" title="绘制图像"></a>绘制图像</h2><p>现在我们有了一个包含点赞数、转发数、评论数、发表日期、正文的5列的tidy的数据集，可以开始可视化探索啦！</p>
+<p>开始用了ggplot2+<a href="https://github.com/cttobin/ggthemr" target="_blank" rel="noopener">ggthemr</a>的组合感觉很好，因为ggthemr的主题真的非常漂亮。<br>不过最后还是用了plotly来绘图，因为觉得交互性也很重要，而且可以导出静态图片，也可以选择某个变量，某个时间段，非常方便。</p>
+<p>代码：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提取2017年10月后的微博</span></span><br><span class="line"><span class="comment"># 之前的数据都比较稳定无波动</span></span><br><span class="line">db.recent &lt;- db %&gt;% filter(date&gt;<span class="string">'2017-10-1'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据变为长格式</span></span><br><span class="line"><span class="comment"># 这里注意gather指定多于一个不变的变量时用-，-，就可以了，用c()包裹会报错。</span></span><br><span class="line">ldb &lt;- db.recent %&gt;% </span><br><span class="line">  gather(key = variable , value = value, -date,-content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制动态图像</span></span><br><span class="line">a &lt;- plot_ly(ldb, </span><br><span class="line">        type      = <span class="string">'scatter'</span>, </span><br><span class="line">        mode      = <span class="string">'lines'</span>, </span><br><span class="line">        x         = ~date, </span><br><span class="line">        y         = ~value, </span><br><span class="line">        color     = ~variable,</span><br><span class="line">        <span class="comment"># 这里指定悬浮框显示内容</span></span><br><span class="line">        text      = ~paste(<span class="string">'date: '</span>, date, <span class="string">'\n'</span>,</span><br><span class="line">                           <span class="string">'variable: '</span>, variable, <span class="string">'\n'</span>,</span><br><span class="line">                           <span class="string">'value: '</span>, value, <span class="string">'\n'</span> ,</span><br><span class="line">                           <span class="string">'微博: '</span>, content, <span class="string">'\n'</span>),</span><br><span class="line">        hoverinfo = <span class="string">'text'</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 图像导出为网页</span></span><br><span class="line">htmlwidgets::saveWidget(as_widget(a),<span class="string">'index.html'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>现在我们得到了折线图：<br><img src="\img\dzp.png" alt="dzp"><br>动态的<a href="http://afarx.com/zyc">点这里</a></p>
+<p>当然还可以研究下怎么更完善（文本换行、横纵轴标度、text的显示）~</p>
+<h1 id="结论（TBC）"><a href="#结论（TBC）" class="headerlink" title="结论（TBC）"></a>结论（TBC）</h1><p>理论上说，一条微博应该是点赞&gt;评论&gt;转发，但因为抡博组的努力，转发量非常高，所以我们这里只看点赞与评论。</p>
+<ul>
+<li><p>小周是从流行之王正式出道的，从出道后到参加偶像练习生之前，都没有什么大的水花，微博平均点赞XX条，评论XX条，这里面还存在后来偶练红了一点粉丝捞的。</p>
+</li>
+<li><p>偶练期间，热度很高，微博平均点赞XX条，评论XX条</p>
+</li>
+<li><p>偶练结束后，数据就稳定的在回落，微博平均点赞XX条，评论XX条，当然这也不能完全说是小花糊了，这和小花沦为广告博主是分不开的……你看八张自拍的数据就很好……</p>
+</li>
+</ul>
+<h2 id="横向对比"><a href="#横向对比" class="headerlink" title="横向对比"></a>横向对比</h2><p>对比一下其他家的数据。</p>
+<h1 id="文本分析（TBC）"><a href="#文本分析（TBC）" class="headerlink" title="文本分析（TBC）"></a>文本分析（TBC）</h1><p>其实转评赞都是附带的，本意是想分分析下小周微博都在说啥……<br>这里用到两个包<code>jiebaR</code>和<code>wordcloud2</code>,感觉都很好用~</p>
+<p>下面展示一个基本流程，细节还需要继续完善。</p>
+<h2 id="构建分词器"><a href="#构建分词器" class="headerlink" title="构建分词器"></a>构建分词器</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新建分词器</span></span><br><span class="line">z &lt;- worker()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义新词</span></span><br><span class="line"><span class="comment"># 一些人名、专用词</span></span><br><span class="line">new_user_word(z, <span class="string">"朱星杰"</span>, <span class="string">"n"</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义停止词</span></span><br><span class="line"><span class="comment"># 一些不需要分析的词</span></span><br><span class="line">stopwords &lt;- c(<span class="string">"的"</span>, <span class="string">"了"</span>, <span class="string">"在"</span>, <span class="string">"是"</span>, <span class="string">"我"</span>, <span class="string">"有"</span>, <span class="string">"和"</span>, <span class="string">"就"</span>,  <span class="string">"不"</span>, <span class="string">"人"</span>, <span class="string">"都"</span>, <span class="string">"一"</span>, <span class="string">"一个"</span>, <span class="string">"上"</span>, <span class="string">"也"</span>, <span class="string">"很"</span>, <span class="string">"到"</span>, <span class="string">"说"</span>, <span class="string">"要"</span>, <span class="string">"去"</span>, <span class="string">"你"</span>, <span class="string">"会"</span>, <span class="string">"着"</span>, <span class="string">"没有"</span>, <span class="string">"看"</span>, <span class="string">"好"</span>, <span class="string">"自己"</span>, <span class="string">"这"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="分词预处理"><a href="#分词预处理" class="headerlink" title="分词预处理"></a>分词预处理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">segWords &lt;- segment(weibo,z)</span><br><span class="line"></span><br><span class="line"># 去除停止词</span><br><span class="line">segWords &lt;- filter_segment(segWords,stopwords)</span><br><span class="line"># 去除数字和英文</span><br><span class="line">segWords&lt;-gsub(&quot;[0-9a-zA-Z]+?&quot;,&quot;&quot;,segWords)</span><br><span class="line"># 去除空格</span><br><span class="line">segWords&lt;-str_trim(segWords)</span><br><span class="line"></span><br><span class="line"># 词频统计</span><br><span class="line">tableWord &lt;- table(segWords)</span><br><span class="line">write.csv(tableWord,&apos;nid.csv&apos;) #导出</span><br></pre></td></tr></table></figure>
+<h2 id="构建词云"><a href="#构建词云" class="headerlink" title="构建词云"></a>构建词云</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 词云</span></span><br><span class="line">wordcloud2(tableWord, size = <span class="number">2</span>, fontFamily = <span class="string">"微软雅黑"</span>,  </span><br><span class="line">color = <span class="string">"random-light"</span>, backgroundColor = <span class="string">"white"</span>)</span><br></pre></td></tr></table></figure>
+<p>导出的图如下（这个部分还要再研究，比如自定义图片、网页显示、图片大小）：</p>
+<p><img src="\img\erha.png" alt="img"><br>很好，除了知道zyc最爱的表情是二哈之外（居然用了38次，丧心病狂），并没有什么收获……</p>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>坚持一下。</p>
+<hr>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ol>
+<li><p>R|数据处理|list的转化与转置<br><a href="https://zhuanlan.zhihu.com/p/27792447" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27792447</a></p>
+</li>
+<li><p>Dataframe hates you!<br><a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf" target="_blank" rel="noopener">http://biostat.mc.vanderbilt.edu/wiki/pub/Main/ColeBeck/datestimes.pdf</a></p>
+</li>
+<li><p>StackOverflow|Plotting two variables on the same graph<br><a href="https://stackoverflow.com/questions/3777174/plotting-two-variables-as-lines-using-ggplot2-on-the-same-graph" target="_blank" rel="noopener">https://stackoverflow.com/questions/3777174/plotting-two-variables-as-lines-using-ggplot2-on-the-same-graph</a></p>
+</li>
+<li><p>ggplot2-ggtheme样例表<br><a href="https://blog.csdn.net/qq_27755195/article/details/52105087" target="_blank" rel="noopener">https://blog.csdn.net/qq_27755195/article/details/52105087</a></p>
+</li>
+<li><p>ggplot2又添新神器——ggthemr助你制作惊艳美图<br><a href="https://zhuanlan.zhihu.com/p/26880524" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26880524</a></p>
+</li>
+<li><p>可能是目前最好的词云解决方案wordcloud2<br><a href="https://cosx.org/2016/08/wordcloud2" target="_blank" rel="noopener">https://cosx.org/2016/08/wordcloud2</a></p>
+</li>
+<li><p>wordcloud2 r语言词云终极解决方案<br><a href="http://yalei.name/2016/06/wordcloud2" target="_blank" rel="noopener">http://yalei.name/2016/06/wordcloud2</a></p>
+</li>
+</ol>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2018/06/07/support/" title= "应援物种类一览">
+                    <div class="nextTitle">应援物种类一览</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/04/27/Favourites/" title= "收藏夹整理-20191212更新">
+                    <div class="prevTitle">收藏夹整理-20191212更新</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "7J5n7syOetTEwKFjwJYRWfdu-gzGzoHsz",
+        appKey: "Jz6NOCDbn4sJ9M4YQ2rJ5wAb",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:137348666@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/afarx" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#新浪微博爬取"><span class="toc-number">1.</span> <span class="toc-text">新浪微博爬取</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#绘制点赞、转发、评论折线图"><span class="toc-number">2.</span> <span class="toc-text">绘制点赞、转发、评论折线图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#加载包"><span class="toc-number">2.1.</span> <span class="toc-text">加载包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入数据"><span class="toc-number">2.2.</span> <span class="toc-text">导入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据预处理"><span class="toc-number">2.3.</span> <span class="toc-text">数据预处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绘制图像"><span class="toc-number">2.4.</span> <span class="toc-text">绘制图像</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结论（TBC）"><span class="toc-number">3.</span> <span class="toc-text">结论（TBC）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#横向对比"><span class="toc-number">3.1.</span> <span class="toc-text">横向对比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文本分析（TBC）"><span class="toc-number">4.</span> <span class="toc-text">文本分析（TBC）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#构建分词器"><span class="toc-number">4.1.</span> <span class="toc-text">构建分词器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分词预处理"><span class="toc-number">4.2.</span> <span class="toc-text">分词预处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建词云"><span class="toc-number">4.3.</span> <span class="toc-text">构建词云</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写在最后"><span class="toc-number">5.</span> <span class="toc-text">写在最后</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">6.</span> <span class="toc-text">参考文献</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 31
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/20</span><a class="archive-post-title" href= "/2018/07/20/Piecewise-regression/" >R语言分段线性回归直线拟合与绘图</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/14</span><a class="archive-post-title" href= "/2018/07/14/nlp/" >微博词频分析报告</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2018/06/17/slogan/" >应援物设计</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href= "/2018/06/07/support/" >应援物种类一览</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2018/05/10/weibo/" >微博点赞评分析及词云生成</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span><a class="archive-post-title" href= "/2018/04/27/Favourites/" >收藏夹整理-20191212更新</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2018/04/04/img-maincolor/" >使用R提取图像主要颜色</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/d3-js/" >D3.JS学习路径</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-css/" >CSS学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-js/" >JavaScript学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-svg/" >SVG学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-html/" >HTML学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/forceNetwork/" >R语言绘制复杂人物网络关系图代码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/comparecc/" >R语言相关系数的差异性检验</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/effectsize/" >R语言中根据effect size计算样本量</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2018/02/28/netViz/" >R语言绘制动态关系网络</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2018/02/28/html-to-github/" >使用Github Pages展示自制html网页</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2018/02/26/Rstudio/" >Rstudio使用快捷键及技巧</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2018/02/26/Rstudio-Github/" >连接Rstudio与Github</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/25</span><a class="archive-post-title" href= "/2018/02/25/ctsem/" >使用R包ctsem构建交叉滞后模型（Cross-lagged Panel Model）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/25</span><a class="archive-post-title" href= "/2018/02/25/r-book/" >R语言学习网站</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2018/02/20/td-history/" >「棠棣之华」中的历史典故</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2018/02/20/td-hidden/" >「棠棣之华」中的隐藏剧情</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2018/02/20/td-poem/" >「棠棣之华」中的诗词</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2018/02/19/add-menu-for-hexo/" >为Hexo模板添加目录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2018/02/19/hexo-code-block/" >Hexo自定义代码块颜色、字体、高亮</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2018/02/19/bulid-blog-2/" >建站札记（二）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2018/02/16/Hexo/" >关于Hexo的一切</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/Consultant/" >统计咨询</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/bulid-blog/" >建站札记（一）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/14</span><a class="archive-post-title" href= "/2018/02/14/My-New-Post/" >Hello，World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="摄影"><span class="iconfont-archer">&#xe606;</span>摄影</span>
+    
+        <span class="sidebar-tag-name" data-tags="读书笔记"><span class="iconfont-archer">&#xe606;</span>读书笔记</span>
+    
+        <span class="sidebar-tag-name" data-tags="未完待续"><span class="iconfont-archer">&#xe606;</span>未完待续</span>
+    
+        <span class="sidebar-tag-name" data-tags="周彦辰"><span class="iconfont-archer">&#xe606;</span>周彦辰</span>
+    
+        <span class="sidebar-tag-name" data-tags="棠棣之华"><span class="iconfont-archer">&#xe606;</span>棠棣之华</span>
+    
+        <span class="sidebar-tag-name" data-tags="吉光片羽"><span class="iconfont-archer">&#xe606;</span>吉光片羽</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="exp+10"><span class="iconfont-archer">&#xe606;</span>exp+10</span>
+    
+        <span class="sidebar-tag-name" data-tags="R"><span class="iconfont-archer">&#xe606;</span>R</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Viz"><span class="iconfont-archer">&#xe606;</span>Viz</span>
+    
+        <span class="sidebar-tag-name" data-tags="君子欲得自取之"><span class="iconfont-archer">&#xe606;</span>君子欲得自取之</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Afar"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->    
+     
+    </body>
+</html>
+
+

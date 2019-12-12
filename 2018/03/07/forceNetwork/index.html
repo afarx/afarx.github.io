@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Afar">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Afar">
+    
+    <meta name="keywords" content="R语言,卫生统计学,摄影">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>R语言绘制复杂人物网络关系图代码 · Star Afar</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >AfarX</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">R语言绘制复杂人物网络关系图代码</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>AfarX</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/Dandelion.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            R语言绘制复杂人物网络关系图代码
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "R">R</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Viz">Viz</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.6k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/03/07</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>基于NetworkD3包绘制，感谢万能的Stackoverflow的帮助。</p>
+<p>代码如下：</p>
+<h1 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h1><p>首先将数据处理为networkD3包需要的数据格式。</p>
+<a id="more"></a>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载包，都是Hadley大神开发的包，可以使用tidyverse包直接全部加载</span></span><br><span class="line"><span class="comment">#library(tidyverse)</span></span><br><span class="line"><span class="keyword">library</span>(stringr)</span><br><span class="line"><span class="keyword">library</span>(readr)</span><br><span class="line"><span class="keyword">library</span>(dplyr)</span><br><span class="line"><span class="keyword">library</span>(tibble)</span><br><span class="line"><span class="keyword">library</span>(reshape2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 载入数据，为防止中文乱码，指定编码为“GB18030"</span></span><br><span class="line">letters &lt;- read_csv(<span class="string">"E://networkViz//GEPHI//edge.csv"</span>,locale=locale(encoding = <span class="string">"GB18030"</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">################################</span></span><br><span class="line"><span class="comment">## Create node and edge lists ##</span></span><br><span class="line"><span class="comment">################################</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### Node list ###</span></span><br><span class="line"><span class="comment"># 从边数据提取节点数据</span></span><br><span class="line">sources &lt;- letters %&gt;%</span><br><span class="line">  distinct(Source) %&gt;%</span><br><span class="line">  rename(label = Source)</span><br><span class="line"></span><br><span class="line">destinations &lt;- letters %&gt;%</span><br><span class="line">  distinct(Target) %&gt;%</span><br><span class="line">  rename(label = Target)</span><br><span class="line"></span><br><span class="line">nodes &lt;- full_join(sources, destinations, by = <span class="string">"label"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create id column and reorder columns</span></span><br><span class="line">nodes &lt;- nodes %&gt;% rowid_to_column(<span class="string">"id"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">### Edge list ###</span></span><br><span class="line"><span class="comment"># 将边数据的label转为id</span></span><br><span class="line">per_route &lt;- letters %&gt;%  </span><br><span class="line">  select(Source, Target,weight)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Join with node ids and reorder columns</span></span><br><span class="line">edges &lt;- per_route %&gt;% </span><br><span class="line">  left_join(nodes, by = c(<span class="string">"Source"</span> = <span class="string">"label"</span>)) %&gt;% </span><br><span class="line">  rename(from = id)</span><br><span class="line"></span><br><span class="line">edges &lt;- edges %&gt;% </span><br><span class="line">  left_join(nodes, by = c(<span class="string">"Target"</span> = <span class="string">"label"</span>)) %&gt;% </span><br><span class="line">  rename(to = id)</span><br><span class="line"></span><br><span class="line">edges &lt;- select(edges, from, to, weight)</span><br></pre></td></tr></table></figure>
+<h1 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h1><p>载入networkD3包进行网络图绘制。<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">########################</span></span><br><span class="line"><span class="comment">## Interactive network##</span></span><br><span class="line"><span class="comment">########################</span></span><br><span class="line"><span class="keyword">library</span>(visNetwork)</span><br><span class="line"><span class="keyword">library</span>(networkD3)</span><br><span class="line"><span class="keyword">library</span>(igraph)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成节点集中度，根据集中度确定节点大小</span></span><br><span class="line">routes_igraph &lt;- graph_from_data_frame(d = edges, vertices = nodes, directed = <span class="literal">FALSE</span>)</span><br><span class="line">nodes$bte &lt;- betweenness(routes_igraph, directed = <span class="literal">F</span>)</span><br><span class="line"></span><br><span class="line">quantile(nodes$bte,probs=<span class="number">0.95</span>)</span><br><span class="line">nodes$size &lt;- car::recode(nodes$bte,<span class="string">"0=1;0:100=2;100:200=3;200:1000=4;else=10"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点分类</span></span><br><span class="line"><span class="comment">#extract group by first.name</span></span><br><span class="line">nodes &lt;- mutate(nodes, group = str_sub(label,<span class="number">0</span>,<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nodes$group &lt;- car::recode(nodes$group,</span><br><span class="line">                           <span class="string">"'顾'='顾';else='世家'"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 边宽度</span></span><br><span class="line">edges &lt;- mutate(edges, width=weight/<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># networkD3要求编号从0开始，重新处理数据</span></span><br><span class="line">nodes_d3 &lt;- mutate(nodes, id = id - <span class="number">1</span>)</span><br><span class="line">edges_d3 &lt;- mutate(edges, from = from - <span class="number">1</span>, to = to - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点描述</span></span><br><span class="line">nodes$description &lt;- paste(<span class="string">"This is a description of"</span>, nodes$label)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 鼠标点击事件（弹出节点描述）</span></span><br><span class="line">clickJS &lt;- <span class="string">"</span></span><br><span class="line"><span class="string">d3.selectAll('.xtooltip').remove(); </span></span><br><span class="line"><span class="string">d3.select('body').append('div')</span></span><br><span class="line"><span class="string">.attr('class', 'xtooltip')</span></span><br><span class="line"><span class="string">.style('position', 'fixed')             # 描述出现位置</span></span><br><span class="line"><span class="string">.style('border-radius', '0px')</span></span><br><span class="line"><span class="string">.style('padding', '5px')</span></span><br><span class="line"><span class="string">.style('opacity', '0.85')              </span></span><br><span class="line"><span class="string">.style('background-color', '#161823')</span></span><br><span class="line"><span class="string">.style('box-shadow', '2px 2px 6px #161823')</span></span><br><span class="line"><span class="string"># 描述内容</span></span><br><span class="line"><span class="string">.html('name: ' + d.description + '&lt;br&gt;' + 'group: ' + d.group) </span></span><br><span class="line"><span class="string">.style('right', '50px')</span></span><br><span class="line"><span class="string">.style('bottom', '50px')</span></span><br><span class="line"><span class="string"># 描述颜色</span></span><br><span class="line"><span class="string">.style('color', d3.select(this).style('fill'))</span></span><br><span class="line"><span class="string">;</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 边颜色</span></span><br><span class="line">Cols &lt;- car::recode(edges$weight,<span class="string">"1:6='#A78E44'"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制网络 ！重要！</span></span><br><span class="line">fn &lt;- forceNetwork(Links = edges_d3, </span><br><span class="line">	Nodes = nodes_d3,       <span class="comment"># 节点数据</span></span><br><span class="line">	Source = <span class="string">"from"</span>,        <span class="comment"># 起始点</span></span><br><span class="line">	Target = <span class="string">"to"</span>,          <span class="comment"># 终点</span></span><br><span class="line">    NodeID = <span class="string">"label"</span>,       <span class="comment"># 节点名称</span></span><br><span class="line">    Group = <span class="string">"group"</span>,        <span class="comment"># 节点分组</span></span><br><span class="line">    Value = <span class="string">"width"</span>,        <span class="comment"># 边粗细  </span></span><br><span class="line">    fontFamily = <span class="string">"黑体"</span>,    <span class="comment"># 字体 </span></span><br><span class="line">    opacity = <span class="number">1</span>,            <span class="comment"># 透明度</span></span><br><span class="line">    fontSize = <span class="number">16</span>,          <span class="comment"># 字号</span></span><br><span class="line">    zoom = <span class="literal">T</span>,               <span class="comment"># 是否缩放</span></span><br><span class="line">    charge=-<span class="number">50</span>,             <span class="comment"># 节点斥力大小（负值越大斥力越大）</span></span><br><span class="line">    bounded=<span class="literal">T</span>,              <span class="comment"># 是否有边界</span></span><br><span class="line">    legend=<span class="literal">T</span>,               <span class="comment"># 是否显示图例</span></span><br><span class="line">    arrows = <span class="literal">F</span>,             <span class="comment"># 是否显示箭头</span></span><br><span class="line">    Nodesize = <span class="string">"size"</span>,      <span class="comment"># 节点比例</span></span><br><span class="line">    linkColour = Cols,      <span class="comment"># 边颜色</span></span><br><span class="line">    opacityNoHover = <span class="number">1</span>,     <span class="comment"># 鼠标悬停时透明度</span></span><br><span class="line">    radiusCalculation = JS(<span class="string">" d.nodesize"</span>),      <span class="comment"># 节点大小</span></span><br><span class="line">    ColourScale &lt;- <span class="string">'d3.scaleOrdinal()           # 节点颜色</span></span><br><span class="line"><span class="string">                   .domain(["顾", "世家"])</span></span><br><span class="line"><span class="string">                   .range(["#FF6900", "#694489"]);'</span>,</span><br><span class="line">    width = <span class="number">1200</span>,          <span class="comment"># 图宽度                  </span></span><br><span class="line">    height = <span class="number">500</span>,          <span class="comment"># 图高度</span></span><br><span class="line">    clickAction= clickJS   <span class="comment"># 鼠标点击事件</span></span><br><span class="line">    )</span><br></pre></td></tr></table></figure></p>
+<p>至此网络已绘制完毕，接下来我们用r设置一下html输出格式。<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(htmltools)</span><br><span class="line"></span><br><span class="line">browsable(</span><br><span class="line">  tagList(</span><br><span class="line">    tags$head(</span><br><span class="line">      tags$style(<span class="string">'</span></span><br><span class="line"><span class="string">                 body&#123;background-color: #161823 !important&#125;   # 背景颜色</span></span><br><span class="line"><span class="string">                 .legend text&#123;fill: #FFFFFF&#125;                  # 图例颜色</span></span><br><span class="line"><span class="string">                 '</span>)</span><br><span class="line">      ),</span><br><span class="line">      fn</span><br><span class="line">      )</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p>r毕竟是个搞统计的软件，html输出没那么好调试（主要是我弱智调试不好……），所以我们直接建一个html网页，把上述网络嵌入到网页中去。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    *&#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">margin</span><span class="selector-pseudo">:100</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">padding</span><span class="selector-pseudo">:200</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.div1</span>&#123;</span></span><br><span class="line"><span class="xml">        padding-left: 100px;   <span class="comment">&lt;!--左边距--&gt;</span></span></span><br><span class="line"><span class="xml">        padding-top: 100px；   <span class="comment">&lt;!--右边距--&gt;</span></span></span><br><span class="line"><span class="xml">        width:800px;           <span class="comment">&lt;!--宽度--&gt;</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined">  </span></span><br><span class="line"><span class="undefined">body &#123;  </span></span><br><span class="line"><span class="undefined">    margin: 0;  </span></span><br><span class="line"><span class="xml">    background-image: url('file:///C|/Users/afarx/Desktop/yw.png');   <span class="comment">&lt;!--背景图片--&gt;</span></span></span><br><span class="line"><span class="css">    <span class="selector-tag">background-repeat</span><span class="selector-pseudo">:no-repeat</span>;                           </span></span><br><span class="line"><span class="xml">        background-position:100% 0%;                                  <span class="comment">&lt;!--背景图片位置--&gt;</span></span></span><br><span class="line"><span class="undefined">&#125;  </span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">bgcolor</span>=<span class="string">"#161823"</span>&gt;</span>        <span class="comment">&lt;!--背景色--&gt;</span></span><br><span class="line"></span><br><span class="line">	    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">"font-family:arial;color:#EEDEB0;font-size:30px;"</span>&gt;</span>棠棣之华<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"font-family:arial;color:#F2ECDE;font-size:13px;"</span>&gt;</span>这张人物关系网络图将带你探索枉却东风作品<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.66rpg.com/game/13639"</span>&gt;</span>《棠棣之华》<span class="tag">&lt;/<span class="name">a</span>&gt;</span>中复杂的人际关系网络。本图仅包括主线剧情出现人物及关系，连线越粗代表关系越亲近。人物节点可拖动，单击人物节点右下角将出现人物小传。<span class="tag">&lt;<span class="name">br</span>&gt;</span>本图由AfarX整理，使用R包networkD3绘制，不断更新完善中。由于能力有限，难免错漏，请大家多多指正！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--嵌入做好的网络图--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">IFRAME</span> <span class="attr">name</span>=<span class="string">"tdzh"</span> <span class="attr">width</span>=<span class="string">1200px</span> <span class="attr">height</span>=<span class="string">600px</span> <span class="attr">frameborder</span>=<span class="string">0</span> <span class="attr">src</span>=<span class="string">"http://afarx.com/b.html"</span> <span class="attr">scrolling</span>=<span class="string">no</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">IFRAME</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>大功告成！现在就是不断完善了！</p>
+<p>效果图见：<a href="http://afarx.com/tdzh.html">http://afarx.com/tdzh.html</a></p>
+<hr>
+<p>参考文献：</p>
+<ol>
+<li>Package ‘networkD3’<br><a href="https://cran.r-project.org/web/packages/networkD3/networkD3.pdf" target="_blank" rel="noopener">https://cran.r-project.org/web/packages/networkD3/networkD3.pdf</a></li>
+<li>CUSTOM NETWORK CHART | NETWORKD3<br><a href="https://www.r-graph-gallery.com/253-custom-network-chart-networkd3/" target="_blank" rel="noopener">https://www.r-graph-gallery.com/253-custom-network-chart-networkd3/</a></li>
+<li>R语言利用igraph和networkD3包快速入门做出炫酷的社交网络图等几类图。<br><a href="http://blog.csdn.net/abc200941410128/article/details/72825628" target="_blank" rel="noopener">http://blog.csdn.net/abc200941410128/article/details/72825628</a></li>
+<li>如何做出漂亮的复杂网络关系图<br><a href="https://www.zhihu.com/question/27813239" target="_blank" rel="noopener">https://www.zhihu.com/question/27813239</a></li>
+<li>linking clickAction on a node in networkD3 to content preview in tab<br><a href="https://stackoverflow.com/questions/44970707/linking-clickaction-on-a-node-in-networkd3-to-content-preview-in-tab" target="_blank" rel="noopener">https://stackoverflow.com/questions/44970707/linking-clickaction-on-a-node-in-networkd3-to-content-preview-in-tab</a></li>
+<li>用R构建Shiny应用程序<br><a href="http://yanping.me/shiny-tutorial/" target="_blank" rel="noopener">http://yanping.me/shiny-tutorial/</a></li>
+<li>Shiny app的网页分享<br><a href="https://liubj2016.github.io/Akuan/group/python&amp;R/note3.html" target="_blank" rel="noopener">https://liubj2016.github.io/Akuan/group/python&amp;R/note3.html</a></li>
+<li>英文版shiny教程<br><a href="http://zevross.com/blog/2016/04/19/r-powered-web-applications-with-shiny-a-tutorial-and-cheat-sheet-with-40-example-apps/" target="_blank" rel="noopener">http://zevross.com/blog/2016/04/19/r-powered-web-applications-with-shiny-a-tutorial-and-cheat-sheet-with-40-example-apps/</a></li>
+<li>改变NetworkD3节点颜色<br><a href="https://stackoverflow.com/questions/35280218/r-networkd3-package-node-coloring-in-simplenetwork" target="_blank" rel="noopener">https://stackoverflow.com/questions/35280218/r-networkd3-package-node-coloring-in-simplenetwork</a></li>
+<li>Network visualization – part 6: D3 and R (networkD3)<br><a href="https://www.r-bloggers.com/network-visualization-part-6-d3-and-r-networkd3/" target="_blank" rel="noopener">https://www.r-bloggers.com/network-visualization-part-6-d3-and-r-networkd3/</a><br><a href="http://www.vesnam.com/Rblog/viznets6/" target="_blank" rel="noopener">http://www.vesnam.com/Rblog/viznets6/</a></li>
+<li>将节点替换成图片<br><a href="https://stackoverflow.com/questions/39315593/r-networkd3-change-node-img" target="_blank" rel="noopener">https://stackoverflow.com/questions/39315593/r-networkd3-change-node-img</a></li>
+<li>给NetworkD3添加标题<br><a href="https://stackoverflow.com/questions/46899144/r-add-title-to-networkd3-plot-and-save" target="_blank" rel="noopener">https://stackoverflow.com/questions/46899144/r-add-title-to-networkd3-plot-and-save</a></li>
+<li>利用嵌套CSS修改networkD3的背景、节点、图例颜色<br><a href="https://stackoverflow.com/questions/36879535/networkd3-forcenetwork-how-to-change-legend-text-colour-text-label-colour-and" target="_blank" rel="noopener">https://stackoverflow.com/questions/36879535/networkd3-forcenetwork-how-to-change-legend-text-colour-text-label-colour-and</a></li>
+<li>加入搜索框<br><a href="https://stackoverflow.com/questions/39486906/search-box-in-network-plot" target="_blank" rel="noopener">https://stackoverflow.com/questions/39486906/search-box-in-network-plot</a></li>
+<li>节点配色<br><a href="http://bl.ocks.org/aaizemberg/78bd3dade9593896a59d" target="_blank" rel="noopener">http://bl.ocks.org/aaizemberg/78bd3dade9593896a59d</a></li>
+<li>d3中文手册<br><a href="https://github.com/d3/d3/wiki/API--%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C" target="_blank" rel="noopener">https://github.com/d3/d3/wiki/API--%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C</a></li>
+<li>htmlwidgets for R<br><a href="http://www.htmlwidgets.org/" target="_blank" rel="noopener">http://www.htmlwidgets.org/</a></li>
+<li>给图片添加tooltips<br><a href="https://stackoverflow.com/questions/44110370/implementing-tooltip-for-networkd3-app" target="_blank" rel="noopener">https://stackoverflow.com/questions/44110370/implementing-tooltip-for-networkd3-app</a></li>
+<li>添加注释<br><a href="https://stackoverflow.com/questions/44970707/linking-clickaction-on-a-node-in-networkd3-to-content-preview-in-tab/46096709#46096709" target="_blank" rel="noopener">https://stackoverflow.com/questions/44970707/linking-clickaction-on-a-node-in-networkd3-to-content-preview-in-tab/46096709#46096709</a></li>
+<li>注释颜色替换<br><a href="https://stackoverflow.com/questions/16304818/d3js-use-elements-current-color-in-tooltip" target="_blank" rel="noopener">https://stackoverflow.com/questions/16304818/d3js-use-elements-current-color-in-tooltip</a></li>
+<li>修改背景图片及位置<br><a href="https://stackoverflow.com/questions/45473185/changing-background-image-within-forcenetwork/45495431#45495431" target="_blank" rel="noopener">https://stackoverflow.com/questions/45473185/changing-background-image-within-forcenetwork/45495431#45495431</a></li>
+<li>中国传统配色<br><a href="http://ylbook.com/cms/web/chuantongsecai/chuantongsecai.htm" target="_blank" rel="noopener">http://ylbook.com/cms/web/chuantongsecai/chuantongsecai.htm</a></li>
+<li>网页嵌入特殊字体<br><a href="http://www.51xuediannao.com/html+css/htmlcssjq/CSS_TTF.html" target="_blank" rel="noopener">http://www.51xuediannao.com/html+css/htmlcssjq/CSS_TTF.html</a></li>
+<li>htmltools水平排列<br><a href="https://stackoverflow.com/questions/42475365/how-to-arrange-rgl-3d-plot-in-grid-using-taglist-from-htmltools" target="_blank" rel="noopener">https://stackoverflow.com/questions/42475365/how-to-arrange-rgl-3d-plot-in-grid-using-taglist-from-htmltools</a><br><a href="https://stackoverflow.com/questions/45175040/multiple-leaflets-in-a-grid/45177697#45177697" target="_blank" rel="noopener">https://stackoverflow.com/questions/45175040/multiple-leaflets-in-a-grid/45177697#45177697</a></li>
+</ol>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2018/03/07/effectsize/" title= "R语言中根据effect size计算样本量">
+                    <div class="nextTitle">R语言中根据effect size计算样本量</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/02/28/netViz/" title= "R语言绘制动态关系网络">
+                    <div class="prevTitle">R语言绘制动态关系网络</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "7J5n7syOetTEwKFjwJYRWfdu-gzGzoHsz",
+        appKey: "Jz6NOCDbn4sJ9M4YQ2rJ5wAb",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:137348666@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/afarx" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#预处理"><span class="toc-number">1.</span> <span class="toc-text">预处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#绘图"><span class="toc-number">2.</span> <span class="toc-text">绘图</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 31
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/20</span><a class="archive-post-title" href= "/2018/07/20/Piecewise-regression/" >R语言分段线性回归直线拟合与绘图</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/14</span><a class="archive-post-title" href= "/2018/07/14/nlp/" >微博词频分析报告</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2018/06/17/slogan/" >应援物设计</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href= "/2018/06/07/support/" >应援物种类一览</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2018/05/10/weibo/" >微博点赞评分析及词云生成</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span><a class="archive-post-title" href= "/2018/04/27/Favourites/" >收藏夹整理-20191212更新</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2018/04/04/img-maincolor/" >使用R提取图像主要颜色</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/d3-js/" >D3.JS学习路径</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-css/" >CSS学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-js/" >JavaScript学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-svg/" >SVG学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-html/" >HTML学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/forceNetwork/" >R语言绘制复杂人物网络关系图代码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/comparecc/" >R语言相关系数的差异性检验</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/effectsize/" >R语言中根据effect size计算样本量</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2018/02/28/netViz/" >R语言绘制动态关系网络</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2018/02/28/html-to-github/" >使用Github Pages展示自制html网页</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2018/02/26/Rstudio/" >Rstudio使用快捷键及技巧</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2018/02/26/Rstudio-Github/" >连接Rstudio与Github</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/25</span><a class="archive-post-title" href= "/2018/02/25/ctsem/" >使用R包ctsem构建交叉滞后模型（Cross-lagged Panel Model）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/25</span><a class="archive-post-title" href= "/2018/02/25/r-book/" >R语言学习网站</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2018/02/20/td-history/" >「棠棣之华」中的历史典故</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2018/02/20/td-hidden/" >「棠棣之华」中的隐藏剧情</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2018/02/20/td-poem/" >「棠棣之华」中的诗词</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2018/02/19/add-menu-for-hexo/" >为Hexo模板添加目录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2018/02/19/hexo-code-block/" >Hexo自定义代码块颜色、字体、高亮</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2018/02/19/bulid-blog-2/" >建站札记（二）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2018/02/16/Hexo/" >关于Hexo的一切</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/Consultant/" >统计咨询</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/bulid-blog/" >建站札记（一）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/14</span><a class="archive-post-title" href= "/2018/02/14/My-New-Post/" >Hello，World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="摄影"><span class="iconfont-archer">&#xe606;</span>摄影</span>
+    
+        <span class="sidebar-tag-name" data-tags="读书笔记"><span class="iconfont-archer">&#xe606;</span>读书笔记</span>
+    
+        <span class="sidebar-tag-name" data-tags="未完待续"><span class="iconfont-archer">&#xe606;</span>未完待续</span>
+    
+        <span class="sidebar-tag-name" data-tags="周彦辰"><span class="iconfont-archer">&#xe606;</span>周彦辰</span>
+    
+        <span class="sidebar-tag-name" data-tags="棠棣之华"><span class="iconfont-archer">&#xe606;</span>棠棣之华</span>
+    
+        <span class="sidebar-tag-name" data-tags="吉光片羽"><span class="iconfont-archer">&#xe606;</span>吉光片羽</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="exp+10"><span class="iconfont-archer">&#xe606;</span>exp+10</span>
+    
+        <span class="sidebar-tag-name" data-tags="R"><span class="iconfont-archer">&#xe606;</span>R</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Viz"><span class="iconfont-archer">&#xe606;</span>Viz</span>
+    
+        <span class="sidebar-tag-name" data-tags="君子欲得自取之"><span class="iconfont-archer">&#xe606;</span>君子欲得自取之</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Afar"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->    
+     
+    </body>
+</html>
+
+

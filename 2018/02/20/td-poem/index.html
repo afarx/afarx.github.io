@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Afar">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Afar">
+    
+    <meta name="keywords" content="R语言,卫生统计学,摄影">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>「棠棣之华」中的诗词 · Star Afar</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >AfarX</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">「棠棣之华」中的诗词</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>AfarX</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/Dandelion.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            「棠棣之华」中的诗词
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "未完待续">未完待续</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "棠棣之华">棠棣之华</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">8.2k</span>阅读时长: <span class="post-count reading-time">27 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/02/20</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <hr>
+<p>所有诗词整理于橙光游戏<strong>棠棣之华</strong>。<br>作者：<strong>枉却东风</strong><br>游戏地址：<a href="http://www.66rpg.com/game/13639" target="_blank" rel="noopener">http://www.66rpg.com/game/13639</a></p>
+<hr>
+<blockquote>
+<p><strong>诗经·小雅·棠棣</strong> <em>先秦·佚名</em><br>棠棣之华，鄂不韡韡。凡今之人，莫如兄弟。<br>死丧之威，兄弟孔怀。原隰裒矣，兄弟求矣。<br>脊令在原，兄弟急难。每有良朋，况也永叹。<br>兄弟阋于墙，外御其务。每有良朋，烝也无戎。<br>丧乱既平，既安且宁。虽有兄弟，不如友生？<br>傧尔笾豆，饮酒之饫。兄弟既具，和乐且孺。<br>妻子好合，如鼓瑟琴。兄弟既翕，和乐且湛。<br>宜尔室家，乐尔妻帑。是究是图，亶其然乎？</p>
+</blockquote>
+<p><code>第二天上午·长乐宫外·孝昌长公主</code></p>
+<blockquote>
+<p><strong>朝中措·梅</strong> <em>宋·陆游</em><br>幽姿不入少年场，无语只凄凉。一个飘零身世，十分冷淡心肠。<br>江头月底，新诗旧梦，孤恨清香。任是春风不管，也曾先识东皇。</p>
+</blockquote>
+<a id="more"></a>
+<p><code>宸妃入梦</code></p>
+<blockquote>
+<p>苇编五绝<br>芦苇高，芦苇长，芦花似雪雪茫茫。芦苇最知风儿暴，芦苇最知雨儿狂。<br>芦苇高，芦苇长，芦苇荡里捉迷藏。多少高堂名利客，都是当年放牛郎。<br>芦苇高，芦苇长，隔山隔水遥相望。芦苇这边是故乡，芦苇那边是汪洋。<br>芦苇高，芦苇长，芦苇荡边编织忙。编成卷入我行囊，伴我从此去远航。<br>芦苇高，芦苇长，芦苇笛声多悠扬。牧童相和在远方，令人牵挂爹和娘。</p>
+</blockquote>
+<p><code>父亲追忆往昔</code></p>
+<blockquote>
+<p><strong>六州歌头·少年侠气</strong> <em>宋·贺铸</em><br>少年侠气，交结五都雄。肝胆洞。毛发耸。立谈中。死生同。一诺千金重。推翘勇。矜豪纵。轻盖拥。联飞鞚。斗城东。轰饮酒垆，春色浮寒瓮。吸海垂虹。闲呼鹰嗾犬，白羽摘雕弓。狡穴俄空。乐匆匆。<br>似黄粱梦。辞丹凤。明月共。漾孤篷。官冗從。怀倥偬。落尘笼。簿书丛。鹖弁如云众。供粗用。忽奇功。笳鼓动。渔阳弄。思悲翁。不请长缨，系取天骄种。剑吼西风。恨登山临水，手寄七弦桐。目送归鸿。</p>
+</blockquote>
+<p><code>崔醉茵向太子告别</code></p>
+<blockquote>
+<p><strong>长门赋</strong> <em>西汉·司马相如</em><br>夫何一佳人兮，步逍遥以自虞。魂逾佚而不反兮，形枯槁而独居。言我朝往而暮来兮，饮食乐而忘人。心慊移而不省故兮，交得意而相亲。<br>　　伊予志之慢愚兮，怀贞悫之欢心。愿赐问而自进兮，得尚君之玉音。奉虚言而望诚兮，期城南之离宫。修薄具而自设兮，君曾不肯乎幸临。廓独潜而专精兮，天漂漂而疾风。登兰台而遥望兮，神怳怳（音晃）而外淫。浮云郁而四塞兮，天窈窈而昼阴。雷殷殷而响起兮，声象君之车音。飘风回而起闺兮，举帷幄之襜襜。桂树交而相纷兮，芳酷烈之誾誾（音吟）。孔雀集而相存兮，玄猿啸而长吟。翡翠协翼而来萃兮，鸾凤翔而北南。<br>　　心凭噫而不舒兮，邪气壮而攻中。下兰台而周览兮，步从容於深宫。正殿块以造天兮，郁并起而穹崇。间徙倚於东厢兮，观夫靡靡而无穷。挤玉户以撼金铺兮，声噌而似钟音。<br>　　刻木兰以为榱兮，饰文杏以为梁。罗丰茸之游树兮，离楼梧而相撑。施瑰木之欂栌兮，委参差以槺梁。时仿佛以物类兮，象积石之将将。五色炫以相曜兮，烂耀耀而成光。致错石之瓴甓兮，象玳瑁之文章。张罗绮之幔帷兮，垂楚组之连纲。<br>　　抚柱楣以从容兮，览曲台之央央。白鹤嗷以哀号兮，孤雌跱於枯肠。日黄昏而望绝兮，怅独托於空堂。悬明月以自照兮，徂清夜於洞房。援雅琴以变调兮，奏愁思之不可长。案流徵以却转兮，声幼眇而复扬。贯历览其中操兮，意慷慨而自昂。左右悲而垂泪兮，涕流离而从横。舒息悒而增欷兮，跿履起而彷徨。揄长袂以自翳兮，数昔日之諐（音谦）殃。无面目之可显兮，遂颓思而就床。抟芬若以为枕兮，席荃兰而茝香。<br>　　忽寝寐而梦想兮，魄若君之在旁。惕寤觉而无见兮，魂诳（音狂）若有亡。众鸡鸣而愁予兮，起视月之精光。观众星之行列兮，毕昴出於东方。望中庭之蔼蔼兮，若季秋之降霜。夜曼曼其若岁兮，怀郁郁其不可再更。澹偃蹇而待曙兮，荒亭亭而复明。妾人窃自悲兮，究年岁而不敢忘。</p>
+</blockquote>
+<p><code>与太子前往平康坊</code></p>
+<blockquote>
+<p><strong>江南弄·凤笙曲</strong> <em>南北朝·萧衍</em><br>绿耀克碧雕管笙。朱唇玉指学凤鸣。流速参差飞且停。在凤楼。弄娇响。间清讴。</p>
+</blockquote>
+<p><code>与太子前往平康坊</code></p>
+<blockquote>
+<p><strong>减字浣溪沙·十五之二</strong> <em>宋·贺铸</em><br>三扇屏山匝象床。背灯偷解素罗裳。粉肌和汗自生香。<br>易失旧欢劳蝶梦，难禁新恨费鸾肠。今宵风月两相忘。</p>
+</blockquote>
+<p><code>二十一年上巳</code></p>
+<blockquote>
+<p><strong>论语·先进</strong> <em>春秋·孔子</em><br>（曾皙曰）暮春者，春服既成，冠者五六人，童子六七人，浴乎沂，风乎舞雩，咏而归。夫子喟然叹曰：吾与点也。</p>
+</blockquote>
+<p><code>与贵妃赏春景</code></p>
+<blockquote>
+<p><strong>谢池春·残寒销尽</strong> <em>宋·李之仪</em><br>残寒销尽，疏雨过，清明后。花径敛余红，风沼萦新皱。乳燕穿庭户，飞絮沾襟袖。正佳时，仍晚昼。著人滋味，真个浓如酒。<br>频移带眼，空只恁、厌厌瘦。不见又思量，见了还依旧。为问频相见，何似长相守？天不老，人未偶。且将此恨，分付庭前柳。</p>
+</blockquote>
+<p><code>【岁月忽已晚】结局</code></p>
+<blockquote>
+<p><strong>行行重行行</strong> <em>汉·佚名</em><br>行行重行行，与君生别离。<br>相去万余里，各在天一涯。<br>道路阻且长，会面安可知。<br>胡马依北风，越鸟巢南枝。<br>相去日已远，衣带日已缓。<br>浮云蔽白日，游子不顾返。<br>思君令人老，岁月忽已晚。<br>弃捐勿复道，努力加餐饭。</p>
+</blockquote>
+<p><code>与吴王府初遇橘氏</code></p>
+<blockquote>
+<p><strong>写意两首</strong> <em>唐·牟融</em><br>寂寥荒馆闭闲门，苔径阴阴屐少痕。白发颠狂尘梦断，<br>青毡泠落客心存。高山流水琴三弄，明月清风酒一樽。<br>醉后曲肱林下卧，此生荣辱不须论。<br>萧萧华发满头生，深远蓬门倦送迎。独喜冥心无外慕，<br>自怜知命不求荣。闲情欲赋思陶令。卧病何人问马卿。<br>林下贫居甘困守，尽教城市不知名。</p>
+</blockquote>
+<p><code>与姨妃赏雪</code></p>
+<blockquote>
+<p><strong>咏雪</strong> <em>唐·骆宾王</em><br>龙云玉叶上，鹤雪瑞花新。<br>影乱铜乌吹，光销玉马津。<br>含辉明素篆，隐迹表祥轮。<br>幽兰不可俪，徒自绕阳春。</p>
+</blockquote>
+<p><code>二十二年元正日</code></p>
+<blockquote>
+<p><strong>和耿拾遗元日观早朝</strong> <em>唐·司空曙</em><br>元日争朝阙，奔流若会溟。路尘和薄雾，骑火接低星。<br>门响双鱼钥，车喧百子铃。冕旒当翠殿，幢戟满彤庭。<br>积岁方编瑞，乘春即省刑。大官陈禹玉，司历献尧蓂，<br>寿酒三觞退，箫韶九奏停。太阳开物象，霈泽及生灵。<br>南陌高山碧，东方晓气青。自怜扬子贱，归草太玄经。</p>
+</blockquote>
+<p><code>与二哥赏歌舞</code></p>
+<blockquote>
+<p><strong>白石郎曲</strong> <em>宋·郭茂倩</em><br>白石郎，临江居。<br>前导江伯后从鱼。<br>积石如玉，列松如翠。<br>郎艳独绝，世无其二。</p>
+</blockquote>
+<p><code>与三哥同游西市</code></p>
+<blockquote>
+<p><strong>正月十五夜</strong> <em>唐·苏味道</em><br>火树银花合，星桥铁锁开。<br>暗尘随马去，明月逐人来。<br>游伎皆秾李，行歌尽落梅。<br>金吾不禁夜，玉漏莫相催。</p>
+</blockquote>
+<p><code>与不归同游西市</code></p>
+<blockquote>
+<p><strong>信南山</strong> <em>先秦·佚名</em><br>信彼南山，维禹甸之。畇畇原隰，曾孙田之。我疆我理，南东其亩。<br>上天同云。雨雪雰雰，益之以霡霂。既优既渥，既沾既足。生我百谷。<br>疆埸翼翼，黍稷彧彧。曾孙之穑，以为酒食。畀我尸宾，寿考万年。<br>中田有庐，疆埸有瓜。是剥是菹，献之皇祖。曾孙寿考，受天之祜。<br>祭以清酒，从以骍牡，享于祖考。执其鸾刀，以启其毛，取其血膋。<br>是烝是享，苾苾芬芬。祀事孔明，先祖是皇。报以介福。万寿无疆。</p>
+</blockquote>
+<p><code>与司马陵逛御花园</code></p>
+<blockquote>
+<p><strong>赠王主簿诗</strong> <em>南北朝·谢眺</em><br>日落窗中坐。<br>红妆好颜色。<br>舞衣襞未缝。<br>流黄覆不织。<br>蜻蛉草际飞。<br>游蜂花上食。<br>一遇长相思。<br>愿寄连翩翼。</p>
+</blockquote>
+<p><code>与司马陵遇琴时</code></p>
+<blockquote>
+<p><strong>奉和随王殿下诗</strong> <em>南北朝·谢眺</em><br>玄冬寂修夜。天围静且开。<br>亭皋霜气怆。松宇清风来。<br>高琴时以思。幽多多感怀。<br>幸藉汾阳想。岭首一些徘徊。</p>
+</blockquote>
+<p><code>与司马陵至风来亭</code></p>
+<blockquote>
+<p><strong>悲哉行</strong> <em>南北朝·谢眺</em><br>萋萋春草生。<br>王孙游有情。<br>差池燕始飞。<br>夭袅桃始荣。<br>灼灼桃悦色。<br>飞飞燕弄声。<br>檐上云结阴。<br>涧下风吹清。<br>幽树虽改观。<br>终始在初生。<br>松茑欢蔓延。<br>樛葛欣虆萦。<br>眇然游宦子。<br>晤言时未幷。<br>鼻感改朔气。<br>眼伤变节荣。<br>侘傺岂徒然。<br>澶漫绝音形。<br>风来不可托。<br>鸟去岂为听。</p>
+</blockquote>
+<p><code>与司马陵至飞虹桥</code></p>
+<blockquote>
+<p><strong>春咏诗</strong> <em>南北朝·沈约</em><br>杨柳乱如丝。<br>绮罗不自持。<br>春草黄复绿。<br>客心伤此时。<br>青苔已结洧。<br>碧水复盈淇。<br>日华照赵瑟。<br>风色动燕姬。<br>襟前万行泪。<br>故是一相思。</p>
+</blockquote>
+<p><code>与司马陵至飞虹桥</code></p>
+<blockquote>
+<p><strong>蝶恋花 杏庄为莫景行题</strong> <em>元·凌云翰</em><br>一色杏林三百树。茅屋无多，更在花深住。旋压小槽留客醉。举杯忽听黄鹂语。醉眼看花花亦舞。风卷残红，飞过邻墙去。恰似牧童遥指处。</p>
+</blockquote>
+<p><code>宫女讨论叶昭媛</code></p>
+<blockquote>
+<p><strong>蝶恋花·和漱玉词</strong> <em>清·王士祯</em><br>凉夜沉沉花漏冻，欹枕无眠，渐觉荒鸡动。此际闲愁郎不共，月移窗罅春寒重。<br>忆共锦衾无半缝，郎似桐花，妾似桐花凤。往事迢迢徒入梦，银筝断续连珠弄。</p>
+</blockquote>
+<p><code>洛阳行前中秋设宴</code></p>
+<blockquote>
+<p><strong>中秋月</strong> <em>宋·苏轼</em><br>暮云收尽溢清寒，银汉无声转玉盘。<br>此生此夜不长好，明月明年何处看。</p>
+</blockquote>
+<p><code>洛阳行前告别三哥</code></p>
+<blockquote>
+<p><strong>白云谣</strong> <em>先秦·佚名</em><br>白云在天，丘陵自出。<br>道里悠远，山川间之。<br>将子无死，尚复能来。</p>
+</blockquote>
+<p>注：《穆天子传》载：周穆王西游至昆仑山见“西王母”，西王母在“瑶池”宴请了他。临别时，西王母做此歌，为之祝福。歌词大意为：天高路远，山重水复，你这来访也真不容易呀！祝愿大王您长寿，下次有机会再来做我的客人吧！</p>
+<p><code>杨骋作自我介绍</code></p>
+<blockquote>
+<p><strong>麟之趾</strong> <em>先秦·佚名</em><br>麟之趾，振振公子，于嗟麟兮。<br>麟之定，振振公姓，于嗟麟兮。<br>麟之角，振振公族，于嗟麟兮。</p>
+</blockquote>
+<p><code>凉州半日游</code></p>
+<blockquote>
+<p><strong>凉州馆中与诸判官夜集</strong> <em>唐·岑参</em><br>弯弯月出挂城头，城头月出照凉州。<br>凉州七里十万家，胡人半解弹琵琶。<br>琵琶一曲肠堪断，风萧萧兮夜漫漫。<br>河西幕中多故人，故人别来三五春。<br>花门楼前见秋草，岂能贫贱相看老。<br>一生大笑能几回，斗酒相逢须醉倒。</p>
+</blockquote>
+<p><code>蟹酿橙</code></p>
+<blockquote>
+<p><strong>新转南曹未叙朝散初秋暑退出守吴兴书此篇以自见志</strong> <em>唐·杜牧</em></p>
+</blockquote>
+<p>捧诏汀洲去，全家羽翼飞。<br>喜抛新锦帐，荣借旧朱衣。<br>且免材为累，何妨拙有机。<br>宋株聊自守，鲁酒怕旁围。<br>清尚宁无素，光阴亦未晞。<br>一杯宽幕席，五字弄珠玑。<br>越浦黄柑嫩，吴溪紫蟹肥。<br>平生江海志，佩得左鱼归。</p>
+<p><code>送顾傲雪出嫁</code></p>
+<blockquote>
+<p><strong>燕燕</strong> <em>先秦·佚名</em></p>
+</blockquote>
+<p>燕燕于飞，差池其羽。<br>之子于归，远送于野。<br>瞻望弗及，泣涕如雨。<br>燕燕于飞，颉之颃之。<br>之子于归，远于将之。<br>瞻望弗及，伫立以泣。<br>燕燕于飞，下上其音。<br>之子于归，远送于南。<br>瞻望弗及，实劳我心。<br>仲氏任只，其心塞渊。<br>终温且惠，淑慎其身。<br>先君之思，以勖寡人。</p>
+<p><code>肃州剿匪后白亭海</code></p>
+<blockquote>
+<p><strong>九歌·国殇</strong> <em>先秦·屈原</em></p>
+</blockquote>
+<p>操吴戈兮被犀甲，车错毂兮短兵接。<br>旌蔽日兮敌若云，矢交坠兮士争先。<br>凌余阵兮躐余行，左骖殪兮右刃伤。<br>霾两轮兮絷四马，援玉枹兮击鸣鼓。<br>天时怼兮威灵怒，严杀尽兮弃原野。<br>出不入兮往不反，平原忽兮路超远。<br>带长剑兮挟秦弓，首身离兮心不惩。<br>诚既勇兮又以武，终刚强兮不可凌。<br>身既死兮神以灵，子魂魄兮为鬼雄。</p>
+<p><code>永泰大婚</code></p>
+<blockquote>
+<p><strong>题都城南庄</strong> <em>唐·崔护</em></p>
+</blockquote>
+<p>去年今日此门中，人面桃花相映红。<br>人面不知何处去，桃花依旧笑春风。</p>
+<p><code>入宫面圣</code></p>
+<blockquote>
+<p><strong>拟魏太子邺中集诗 魏太子</strong> <em>南北朝·谢灵运</em></p>
+</blockquote>
+<p>小序建安末，余时在邺宫，朝游夕燕，究欢愉之极。天下良辰美景，赏心乐事，四者难并。今昆弟友朋，二三诸彦，共尽之矣。古来此娱，书籍未见，何者？楚襄王时有宋玉、唐景，梁孝王时有邹、枚、严、马，游者美矣，而其主不文；汉武帝徐乐诸才，备应对之能，而雄猜多忌，岂获晤言之适？不诬方将，庶必贤于今日尔。岁月如流，零落将尽，撰文怀人，感往增怆。其辞曰：百川赴巨海，众星环北辰。照灼烂霄汉，遥裔起长津。天地中横溃，家王拯生民。区宇既涤荡，羣英必来臻。忝此钦贤性，由来常怀仁。况值众君子，倾心隆日新。论物靡浮说，析理实敷陈。罗缕岂阙辞？窈窕究天人。澄觞满金罍，连榻设华茵。急弦动飞听，清歌拂梁尘。何言相遇易，此欢信可珍。</p>
+<p><code>折柳亭</code></p>
+<blockquote>
+<p><strong>四色诗</strong> <em>南北朝·范云</em><br>折柳青门外。<br>握兰翠疏中。<br>绿苹骋春日。<br>碧渚澹时风。</p>
+</blockquote>
+<p><code>凤凰池</code></p>
+<blockquote>
+<p><strong>诗经·大雅·卷阿</strong> <em>佚名·先秦</em></p>
+</blockquote>
+<p>有卷者阿，飘风自南。岂弟君子，来游来歌，以矢其音。<br>伴奂尔游矣，优游尔休矣。岂弟君子，俾尔弥尔性，似先公酋矣。<br>尔土宇昄章，亦孔之厚矣。岂弟君子，俾尔弥尔性，百神尔主矣。<br>尔受命长矣，茀禄尔康矣。岂弟君子，俾尔弥尔性，纯嘏尔常矣。<br>有冯有翼，有孝有德，以引以翼。岂弟君子，四方为则。<br>颙颙卬卬，如圭如璋，令闻令望。岂弟君子，四方为纲。<br>凤凰于飞，翙翙其羽，亦集爰止。蔼蔼王多吉士，维君子使，媚于天子。<br>凤凰于飞，翙翙其羽，亦傅于天。蔼蔼王多吉人，维君子命，媚于庶人。<br>凤凰鸣矣，于彼高冈。梧桐生矣，于彼朝阳。菶々萋萋，雍雍喈喈。<br>君子之车，既庶且多。君子之马，既闲且驰。矢诗不多，维以遂歌。</p>
+<p><code>肃州剿匪</code></p>
+<blockquote>
+<p><strong>天行健</strong> <em>燕垒生</em><br>身既死矣，归葬山阳。<br>山何巍巍，天何苍苍。<br>山有木兮国有殇。<br>魂兮归来，以瞻家邦。<br>身既殁矣，归葬山阿。<br>人生苦短，岁月蹉跎。<br>生有命兮死无何。<br>魂兮归来，以瞻山河。<br>身既没矣，归葬山麓。<br>天何高高，风何肃肃。<br>执干戈兮灵旗矗。<br>魂兮归来，永守亲族。</p>
+</blockquote>
+<p><code>驺虞之变</code></p>
+<blockquote>
+<p><strong>关山月</strong> <em>唐·李白</em><br>明月出天山，苍茫云海间。<br>长风几万里，吹度玉门关。<br>汉下白登道，胡窥青海湾。<br>由来征战地，不见有人还。<br>戍客望边色，思归多苦颜。<br>高楼当此夜，叹息未应闲。</p>
+</blockquote>
+<p><code>驺虞之变</code></p>
+<blockquote>
+<p><strong>古从军行</strong> <em>唐·李颀</em></p>
+</blockquote>
+<p>白日登山望烽火，黄昏饮马傍交河。<br>行人刁斗风沙暗，公主琵琶幽怨多。<br>野云万里无城郭，雨雪纷纷连大漠。<br>胡雁哀鸣夜夜飞，胡儿眼泪双双落。<br>闻道玉门犹被遮，应将性命逐轻车。<br>年年战骨埋荒外，空见蒲桃入汉家。</p>
+<p><code>酒泉守城之战</code></p>
+<blockquote>
+<p><strong>陇西行</strong> <em>唐·王维</em><br>十里一走马，五里一扬鞭。<br>都护军书至，匈奴围酒泉。<br>关山正飞雪，烽戍断无烟。</p>
+</blockquote>
+<blockquote>
+<p><strong>广德初銮驾出关后登高愁望二首</strong> <em>唐·钱起</em><br>长安不可望，远处边愁起。<br>辇毂混戎夷，山河空表里。<br>黄云压城阙，斜照移烽垒。<br>汉帜远成霞，胡马来如蚁。<br>不知涿鹿战，早晚蚩尤死。<br>渴日候河清，沉忧催暮齿。<br>愁看秦川色，惨惨云景晦。<br>乾坤暂运行，品物遗覆载。<br>黄尘涨戎马，紫气随龙旆。<br>掩泣指关东，日月妖氛外。<br>臣心寄远水，朝海去如带。<br>周德更休明，天衢伫开泰。</p>
+</blockquote>
+<blockquote>
+<p><strong>己亥岁二首·僖宗广明元年</strong> <em>唐·曹松</em><br>泽国江山入战图，生民何计乐樵苏。<br>凭君莫话封侯事，一将功成万骨枯。<br>传闻一战百神愁，两岸强兵过未休。<br>谁道沧江总无事，近来长共血争流。</p>
+</blockquote>
+<blockquote>
+<p><strong>咏史诗·汉宫</strong> <em>唐·胡曾</em><br>明妃远嫁泣西风，玉箸双垂出汉宫。<br>何事将军封万户，却令红粉为和戎。</p>
+</blockquote>
+<blockquote>
+<p><strong>出塞二首</strong> <em>唐·王昌龄</em><br>秦时明月汉时关，万里长征人未还。<br>但使龙城飞将在，不教胡马度阴山。<br>骝马新跨白玉鞍，战罢沙场月色寒。<br>城头铁鼓声犹振，匣里金刀血未干。</p>
+</blockquote>
+<p><code>慕容舍脂</code></p>
+<blockquote>
+<p><strong>木兰辞</strong> <em>南北朝·佚名</em><br>唧唧复唧唧，木兰当户织。不闻机杼声，唯闻女叹息。<br>问女何所思，问女何所忆。女亦无所思，女亦无所忆。昨夜见军帖，可汗大点兵，军书十二卷，卷卷有爷名。阿爷无大儿，木兰无长兄，愿为市鞍马，从此替爷征<br>东市买骏马，西市买鞍鞯，南市买辔头，北市买长鞭。旦辞爷娘去，暮宿黄河边，不闻爷娘唤女声，但闻黄河流水鸣溅溅。旦辞黄河去，暮至黑山头，不闻爷娘唤女声，但闻燕山胡骑鸣啾啾。<br>万里赴戎机，关山度若飞。朔气传金柝，寒光照铁衣。将军百战死，壮士十年归。<br>归来见天子，天子坐明堂。策勋十二转，赏赐百千强。可汗问所欲，木兰不用尚书郎，愿驰千里足，送儿还故乡。<br>爷娘闻女来，出郭相扶将；阿姊闻妹来，当户理红妆；小弟闻姊来，磨刀霍霍向猪羊。开我东阁门，坐我西阁床，脱我战时袍，著我旧时裳。当窗理云鬓，对镜贴花黄。出门看火伴，火伴皆惊忙：同行十二年，不知木兰是女郎。<br>雄兔脚扑朔，雌兔眼迷离；双兔傍地走，安能辨我是雄雌？</p>
+</blockquote>
+<p><code>归</code></p>
+<blockquote>
+<p><strong>出自蓟北门行</strong> <em>唐·李白</em><br>虏阵横北荒，胡星曜精芒。<br>羽书速惊电，烽火昼连光。<br>虎竹救边急，戎车森已行。<br>明主不安席，按剑心飞扬。<br>推毂出猛将，连旗登战场。<br>兵威冲绝漠，杀气凌穹苍。<br>列卒赤山下，开营紫塞傍。<br>途冬沙风紧，旌旗飒凋伤。<br>画角悲海月，征衣卷天霜。<br>挥刃斩楼兰，弯弓射贤王。<br>单于一平荡，种落自奔亡。<br>收功报天子，行歌归咸阳。</p>
+</blockquote>
+<p><code>莱国公家宴</code></p>
+<blockquote>
+<p><strong>赠卫八处士</strong> <em>唐·杜甫</em><br>人生不相见，动如参与商。<br>今夕复何夕，共此灯烛光。<br>少壮能几时，鬓发各已苍。<br>访旧半为鬼，惊呼热中肠。<br>焉知二十载，重上君子堂。<br>昔别君未婚，儿女忽成行。<br>怡然敬父执，问我来何方。<br>问答乃未已，儿女罗酒浆。<br>夜雨翦春韭，新炊间黄粱。<br>主称会面难，一举累十觞。<br>十觞亦不醉，感子故意长。<br>明日隔山岳，世事两茫茫。</p>
+</blockquote>
+<p><code>项擎</code></p>
+<blockquote>
+<p><strong>秋兴八首（其三）</strong> <em>唐·杜甫</em><br>千家山郭静朝晖，一日江楼坐翠微。<br>信宿渔人还泛泛，清秋燕子故飞飞。<br>匡衡抗疏功名薄，刘向传经心事违。<br>同学少年多不贱，五陵衣马自轻肥。</p>
+</blockquote>
+<p><code>夏侯</code></p>
+<blockquote>
+<p><strong>长亭怨慢·渐吹尽</strong> <em>宋·姜夔</em><br>多不同。桓大司马云：昔年种柳，依依汉南。今看摇落，凄怆江潭。树犹如此，人何以堪。此语予深爱之渐吹尽、枝头香絮。是处人家，绿深门户。远浦萦回，暮帆零乱向何许。阅人多矣，谁得似、长亭树。树若有情时，不会得、青青如此。<br>日暮。望高城不见，只见乱山无数。韦郎去也，怎忘得、玉环分付。第一是、早早归来，怕红萼、无人为主。算空有并刀，难翦离愁千缕。</p>
+</blockquote>
+<p><code>度春风</code></p>
+<blockquote>
+<p><strong>少年行二首（其二</strong> <em>唐·李白</em><br>五陵年少金市东，银鞍白马度春风。<br>落花踏尽游何处，笑入胡姬酒肆中。</p>
+</blockquote>
+<p><code>告别慕容舍脂</code></p>
+<blockquote>
+<p><strong>玉楼春·尊前拟把归期说</strong> <em>宋·欧阳修</em><br>尊前拟把归期说。未语春容先惨咽。人生自是有情痴，此恨不关风与月。<br>离歌且莫翻新阕。一曲能教肠寸结。直须看尽洛城花，始共春风容易别。</p>
+</blockquote>
+<p><code>夜</code></p>
+<blockquote>
+<p><strong>于易水送别</strong> <em>唐·骆宾王</em><br>此地别燕丹，壮士发冲冠。<br>昔时人已没，今日水犹寒。</p>
+</blockquote>
+<p><code>悫·分手</code></p>
+<blockquote>
+<p><strong>蝶恋花·梦觉高唐云雨散</strong> <em>宋·赵令畤</em><br>梦觉高唐云雨散。十二巫峰，隔断相思眼。不为旁人移步懒。为郎憔悴羞郎见。青翼不来孤凤怨。露失桃源，再会终无便。旧恨新愁无计遣。情深何似情俱浅。</p>
+</blockquote>
+<p><code>杏园</code></p>
+<blockquote>
+<p><strong>暮春送客</strong> <em>唐·韩琮</em><br>绿暗红稀出凤城，暮云楼阁古今情。<br>行人莫听宫前水，流尽年光是此声。</p>
+</blockquote>
+<p><code>折柳亭</code></p>
+<blockquote>
+<p><strong>丽人行</strong> <em>唐·杜甫</em><br>三月三日天气新，长安水边多丽人。<br>态浓意远淑且真，肌理细腻骨肉匀。<br>绣罗衣裳照暮春，蹙金孔雀银麒麟。<br>头上何所有？翠微盍叶垂鬓唇。<br>背后何所见？珠压腰衱稳称身。<br>就中云幕椒房亲，赐名大国虢与秦。<br>紫驼之峰出翠釜，水精之盘行素鳞。<br>犀箸厌饫久未下，鸾刀缕切空纷纶。<br>黄门飞鞚不动尘，御厨络绎送八珍。<br>箫鼓哀吟感鬼神，宾从杂遝实要津。<br>后来鞍马何逡巡，当轩下马入锦茵。<br>杨花雪落覆白苹，青鸟飞去衔红巾。<br>炙手可热势绝伦，慎莫近前丞相嗔！</p>
+</blockquote>
+<p><code>飞虹桥</code></p>
+<blockquote>
+<p><strong>春六十韵</strong> <em>唐·元稹</em><br>腻粉梨园白，胭脂桃径红。郁金垂嫩柳，罯画委高笼。</p>
+</blockquote>
+<p><code>凤凰池</code></p>
+<blockquote>
+<p><strong>钓船归·绿净春深好染衣</strong> <em>唐·杜甫</em><br>绿净春深好染衣。际柴扉。溶溶漾漾白鸥飞。两忘机。<br>南去北来徒自老，故人稀。夕阳长送钓船归。鳜鱼肥。</p>
+</blockquote>
+<p><code>排云台</code></p>
+<blockquote>
+<p><strong>三日诗</strong> <em>南北朝·鲍照</em><br>气暄动思心。<br>柳青起春怀。<br>时艳怜花药。<br>服净悦登台。<br>提觞野中饮。<br>爱心烟未开。<br>露色染春草。<br>泉源洁冰苔。<br>泥泥濡露条。<br>袅袅承风栽。<br>凫雏掇苦荠。<br>黄鸟衔樱梅。<br>解衿欣景预。<br>临流竞覆杯。<br>美人竟何在。</p>
+</blockquote>
+<p><code>杨骋事件</code></p>
+<blockquote>
+<p><strong>行路难（其一）</strong> <em>唐·李白</em><br>金樽清酒斗十千，玉盘珍羞直万钱。<br>停杯投箸不能食，拔剑四顾心茫然。<br>欲渡黄河冰塞川，将登太行雪满山。<br>闲来垂钓碧溪上，忽复乘舟梦日边。<br>行路难！行路难！多歧路，今安在？<br>长风破浪会有时，直挂云帆济沧海。</p>
+</blockquote>
+<p><code>杨骋事件</code></p>
+<blockquote>
+<p><strong>行路难（其五）</strong> <em>唐·贺兰进明</em><br>君不见东流水，一去无穷已。君不见西郊云，<br>日夕空氛氲。群雁裴回不能去，一雁悲鸣复失群。<br>人生结交在终始，莫以升沈中路分。</p>
+</blockquote>
+<p><code>秦王妃宇文镜</code></p>
+<blockquote>
+<p><strong>游赤石进帆海</strong> <em>南北朝·谢灵运</em><br><strong>首夏犹清和，芳草亦未歇。</strong><br>水宿淹晨暮，阴霞屡兴没。<br>周览倦瀛壖，况乃陵穷发。<br>川后时安流，天吴静不发。<br>扬帆采石华，挂席拾海月。<br>溟涨无端倪，虚舟有超越。<br>仲连轻齐组，子牟眷魏阙。<br>矜名道不足，适己物可忽。<br>请附任公言，终然谢天伐。</p>
+</blockquote>
+<p><code>司马若梅入梦</code></p>
+<blockquote>
+<p><strong>菩萨蛮（乙巳冬前间举似前作，因和之）</strong> <em>宋·辛弃疾</em><br>锦书谁寄相思语。天边数遍飞鸿数。一夜梦千回。梅花入梦来。<br>涨痕粉树发。霜冷沙洲日。心事莫惊鸥。人间千万愁。</p>
+</blockquote>
+<p><code>端午竞渡</code></p>
+<blockquote>
+<p><strong>竞渡曲</strong> <em>唐·刘禹锡</em><br>沅江五月平堤流，邑人相将浮彩舟。<br>灵均何年歌已矣，哀谣振楫从此起。<br>杨桴击节雷阗阗，乱流齐进声轰然。<br>蛟龙得雨鬐鬣动，螮蝀饮河形影联。<br>刺史临流褰翠帏，揭竿命爵分雄雌。<br>先鸣馀勇争鼓舞，未至衔枚颜色沮。<br>百胜本自有前期，一飞由来无定所。<br>风俗如狂重此时，纵观云委江之湄。<br>彩旂夹岸照蛟室，罗袜凌波呈水嬉。<br>曲终人散空愁暮，招屈亭前水东注。</p>
+</blockquote>
+<p><code>荥国夫人</code></p>
+<blockquote>
+<p><strong>悲善才</strong> <em>唐·李绅</em><br>穆王夜幸蓬池曲，金銮殿开高秉烛。东头弟子曹善才，<br>琵琶请进新翻曲。翠蛾列坐层城女，笙笛参差齐笑语。<br>天颜静听朱丝弹，众乐寂然无敢举。衔花金凤当承拨，<br>转腕拢弦促挥抹，花翻凤啸天上来，裴回满殿飞春雪。<br>抽弦度曲新声发，金铃玉珮相瑳切。流莺子母飞上林，<br>仙鹤雌雄唳明月。此时奉诏侍金銮，别殿承恩许召弹。<br>三月曲江春草绿，九霄天乐下云端。紫髯供奉前屈膝，<br>尽弹妙曲当春日。寒泉注射陇水开，胡雁翻飞向天没。<br>日曛尘暗车马散，为惜新声有馀叹。明年冠剑闭桥山，<br>万里孤臣投海畔。笼禽铩翮尚还飞，白首生从五岭归。<br>闻道善才成朽骨，空馀弟子奉音徽。南谯寂寞三春晚，<br>有客弹弦独凄怨。静听深奏楚月光，忆昔初闻曲江宴。<br>心悲不觉泪阑干，更为调弦反覆弹。秋吹动摇神女佩，<br>月珠敲击水晶盘。<strong>自怜淮海同泥滓，恨魄凝心未能死。<br>惆怅追怀万事空，雍门感慨徒为尔。</strong></p>
+</blockquote>
+<p><code>杜彻大婚</code></p>
+<blockquote>
+<p><strong>病中多雨逢寒食</strong> <em>唐·白居易</em><br>水国多阴常懒出，老夫饶病爱闲眠。<br>三旬卧度莺花月，一半春销风雨天。<br>薄暮何人吹觱篥，新晴几处缚秋千。<br><strong>彩绳芳树长如旧，唯是年年换少年。</strong></p>
+</blockquote>
+<p><code>秦王生辰</code></p>
+<blockquote>
+<p><strong>诗经·秦风·无衣</strong><br>岂曰无衣？与子同袍。王于兴师，修我戈矛。与子同仇！<br>岂曰无衣？与子同泽。王于兴师，修我矛戟。与子偕作！<br>岂曰无衣？与子同裳。王于兴师，修我甲兵。与子偕行！</p>
+</blockquote>
+<blockquote>
+<p><strong>东汉军歌</strong><br>批铁甲兮，挎长刀。<br>与子征战兮，路漫长。<br>同敌忾兮，共死生。<br>与子征战兮，心不怠。<br>踏燕然兮，逐胡儿。<br>与子征战兮，歌无畏。</p>
+</blockquote>
+<p><code>秦王生辰</code></p>
+<blockquote>
+<p><strong>大墙上蒿行</strong> <em>魏晋·曹丕</em><br>阳春无不长成。草木羣类随大风起。零落若何翩翩。中心独立一何茕。四时舍我驱驰。今我隐约欲何为。人生居天壤间。忽如飞鸟栖枯枝。我今隐约欲何为。适君身体所服。何不恣君口腹所尝。冬被貂鼲温瞹。夏当服绮罗轻凉。行力自苦。我将欲何为。不及君少壮之时。乘坚车。策肥马良。上有沧浪之天。今我难得久来视。下有蠕蠕之地。今我难得久来履。何不恣意遨游。从君所喜。带我宝剑。今尔何为自低卬。悲丽平壮观。白如积雪。利如秋霜。驳犀标首。玉琢中央。帝王所服。辟除凶殃。御左右奈何致福祥。吴之辟闾。越之步光。楚之龙泉。韩有墨阳。苗山之铤。羊头之钢。知名前代。咸自谓丽且美。曾不如君剑良。绮难忘。冠青云之崔嵬。纤罗为缨。饰以翠翰。既美且轻。表容仪。俯仰垂光荣。宋之章甫。齐之高冠。亦自谓美。盖何足观。排金铺。坐玉堂。风尘不起。天气清凉。奏桓瑟。舞赵倡。女娥长歌。声协宫商。感心动耳。荡气回肠。酌桂酒。鲙鲤鲂。与佳人期为乐康。前奉玉巵。为我行觞。<strong>今日乐不可忘。乐未央。为乐常苦迟。岁月逝。忽若飞。何为自苦。使我心悲。</strong></p>
+</blockquote>
+<p><code>送别杨骋</code></p>
+<blockquote>
+<p><strong>山中送别</strong> <em>唐·王维</em><br>山中相送罢，日暮掩柴扉。<br>春草明年绿，王孙归不归。</p>
+</blockquote>
+<p><code>再回凉府</code></p>
+<blockquote>
+<p><strong>短歌行</strong> <em>魏晋·曹操</em><br>对酒当歌，人生几何！<br>譬如朝露，去日苦多。<br>慨当以慷，忧思难忘。<br>何以解忧？唯有杜康。<br>青青子衿，悠悠我心。<br>但为君故，沉吟至今。<br>呦呦鹿鸣，食野之苹。<br>我有嘉宾，鼓瑟吹笙。<br>明明如月，何时可掇？<br>忧从中来，不可断绝。<br>越陌度阡，枉用相存。<br>契阔谈䜩，心念旧恩。<br>月明星稀，乌鹊南飞。<br>绕树三匝，何枝可依？<br>山不厌高，海不厌深。<br>周公吐哺，天下归心。</p>
+</blockquote>
+<p><code>韩凛之死</code></p>
+<blockquote>
+<p><strong>远游</strong> <em>先秦·屈原</em><br><strong>九章</strong> <em>先秦·屈原</em><br>知死不可让，愿勿爱兮。</p>
+</blockquote>
+<p><code>恩-别</code></p>
+<blockquote>
+<p><strong>别赋</strong> <em>南北朝·江淹</em><br>怨复怨兮远山曲，去复去兮长河湄。<br>明月白露，光阴往来，与子之别，思心徘徊。</p>
+</blockquote>
+<p><code>恩-南海线</code></p>
+<blockquote>
+<p><strong>摸鱼儿·雁丘词</strong> <em>金·元好问</em><br>问世间，情为何物，直教生死相许？<br>天南地北双飞客，老翅几回寒暑。<br>欢乐趣，离别苦，就中更有痴儿女。<br>君应有语：<br>渺万里层云，千山暮雪，只影向谁去？</p>
+</blockquote>
+<p><code>恩-永泰大婚</code></p>
+<blockquote>
+<p><strong>柳梢青·过何郎石见早梅</strong> <em>宋·赵长卿</em><br>云暗天低。枫林凋翠，寒雁声悲。茅店儿前，竹篱笆后，初见横枝。<br>盈盈粉面香肌。记月榭、当年见伊。有恨难传，无肠可断，立马多时。</p>
+</blockquote>
+<blockquote>
+<p><strong>挽辞</strong> <em>唐·李煜</em><br>珠碎眼前珍，花凋世外春。<br>未销心里恨，又失掌中身。<br>玉笥犹残药，香奁已染尘。<br>前哀将后感，无泪可沾巾。<br>艳质同芳树，浮危道略同。<br>正悲春落实，又苦雨伤丛。<br>秾丽今何在，飘零事已空。<br>沉沉无问处，千载谢东风。</p>
+</blockquote>
+<p><code>悠-永泰大婚</code></p>
+<blockquote>
+<p><strong>春日行</strong> <em>南北朝·鲍照</em><br>献岁发，吾将行。<br>春山茂，春日明。<br>园中鸟，多嘉声。<br>梅始发，柳始青。<br>泛舟舻，齐棹惊。<br>奏《采菱》，歌《鹿鸣》。<br>风微起，波微生。<br>弦亦发，酒亦倾。<br>入莲池，折桂枝。<br>芳袖动，芬叶披。<br>两相思，两不知。</p>
+</blockquote>
+<p><code>悠-赠云杉木簪</code></p>
+<blockquote>
+<p><strong>潜别离</strong> <em>唐·白居易</em><br>不得哭，潜别离。不得语，暗相思。<br>两心之外无人知。<br>深笼夜锁独栖鸟，利剑春断连理枝。<br>河水虽浊有清日，乌头虽黑有白时。<br>惟有潜离与暗别，彼此甘心无后期。</p>
+</blockquote>
+<p><code>悠-回京前见舍脂</code></p>
+<blockquote>
+<p><strong>菩萨蛮·玉炉冰簟鸳鸯锦</strong> <em>五代·牛峤</em><br>玉炉冰簟鸳鸯锦，粉融香汗流山枕。帘外辘轳声，敛眉含笑惊。<br>柳阴轻漠漠，低鬓蝉钗落。须作一生拚，尽君今日欢。</p>
+</blockquote>
+<p><code>懋-遇成漓</code><br>孟子曰：“<strong>牛山之木尝美矣</strong>，以其郊于大国也，斧斤伐之，可以为美乎？是其日夜之所息，雨露之所润，非无萌蘖之生焉，牛羊又从而牧之，是以若彼濯濯也。人见其濯濯也，以为未尝有材焉，此岂山之性也哉？虽存乎人者，岂无仁义之心哉？其所以放其良心者，亦犹斧斤之于木也，旦旦而伐之，可以为美乎？其 日夜之所息，平旦之气，其好恶与人相近也者几希，则其旦昼之所为，有梏亡之矣。梏之反复，则其夜气不足以存；夜气不足以存，则<strong>其违禽兽不远矣</strong>。人见其禽兽也，而以为未尝有才焉者，是岂人之情也哉？故苟得其养，无物不长；苟失其养，无物不消。孔子曰：‘操则存，舍则亡；出人无时，莫知其乡。’惟心之谓与？”</p>
+<blockquote>
+<p><strong>弟子规</strong> <em>清·李毓秀</em><br>入则孝，出则悌。</p>
+</blockquote>
+<blockquote>
+<p><strong>论语·学而</strong> <em>春秋·孔子</em><br>“君子务本，本立而道生。孝悌也者，其为仁之本与？”</p>
+</blockquote>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2018/02/20/td-hidden/" title= "「棠棣之华」中的隐藏剧情">
+                    <div class="nextTitle">「棠棣之华」中的隐藏剧情</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/02/19/hexo-code-block/" title= "Hexo自定义代码块颜色、字体、高亮">
+                    <div class="prevTitle">Hexo自定义代码块颜色、字体、高亮</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="comment"></div>
+    <script>
+    new Valine({
+        el: '#comment' ,
+        notify:false, 
+        verify:false, 
+        appId: "7J5n7syOetTEwKFjwJYRWfdu-gzGzoHsz",
+        appKey: "Jz6NOCDbn4sJ9M4YQ2rJ5wAb",
+        placeholder: "",
+        path:window.location.pathname, 
+        avatar:'mm' 
+    });
+    </script>
+
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:137348666@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/afarx" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 31
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/20</span><a class="archive-post-title" href= "/2018/07/20/Piecewise-regression/" >R语言分段线性回归直线拟合与绘图</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/14</span><a class="archive-post-title" href= "/2018/07/14/nlp/" >微博词频分析报告</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2018/06/17/slogan/" >应援物设计</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href= "/2018/06/07/support/" >应援物种类一览</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/10</span><a class="archive-post-title" href= "/2018/05/10/weibo/" >微博点赞评分析及词云生成</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span><a class="archive-post-title" href= "/2018/04/27/Favourites/" >收藏夹整理-20191212更新</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/04</span><a class="archive-post-title" href= "/2018/04/04/img-maincolor/" >使用R提取图像主要颜色</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/d3-js/" >D3.JS学习路径</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-css/" >CSS学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-js/" >JavaScript学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-svg/" >SVG学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/14</span><a class="archive-post-title" href= "/2018/03/14/learn-html/" >HTML学习笔记</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/forceNetwork/" >R语言绘制复杂人物网络关系图代码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/comparecc/" >R语言相关系数的差异性检验</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/07</span><a class="archive-post-title" href= "/2018/03/07/effectsize/" >R语言中根据effect size计算样本量</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2018/02/28/netViz/" >R语言绘制动态关系网络</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2018/02/28/html-to-github/" >使用Github Pages展示自制html网页</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2018/02/26/Rstudio/" >Rstudio使用快捷键及技巧</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2018/02/26/Rstudio-Github/" >连接Rstudio与Github</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/25</span><a class="archive-post-title" href= "/2018/02/25/ctsem/" >使用R包ctsem构建交叉滞后模型（Cross-lagged Panel Model）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/25</span><a class="archive-post-title" href= "/2018/02/25/r-book/" >R语言学习网站</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2018/02/20/td-history/" >「棠棣之华」中的历史典故</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2018/02/20/td-hidden/" >「棠棣之华」中的隐藏剧情</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/20</span><a class="archive-post-title" href= "/2018/02/20/td-poem/" >「棠棣之华」中的诗词</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2018/02/19/add-menu-for-hexo/" >为Hexo模板添加目录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2018/02/19/hexo-code-block/" >Hexo自定义代码块颜色、字体、高亮</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/19</span><a class="archive-post-title" href= "/2018/02/19/bulid-blog-2/" >建站札记（二）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2018/02/16/Hexo/" >关于Hexo的一切</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/Consultant/" >统计咨询</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/15</span><a class="archive-post-title" href= "/2018/02/15/bulid-blog/" >建站札记（一）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/14</span><a class="archive-post-title" href= "/2018/02/14/My-New-Post/" >Hello，World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="摄影"><span class="iconfont-archer">&#xe606;</span>摄影</span>
+    
+        <span class="sidebar-tag-name" data-tags="读书笔记"><span class="iconfont-archer">&#xe606;</span>读书笔记</span>
+    
+        <span class="sidebar-tag-name" data-tags="未完待续"><span class="iconfont-archer">&#xe606;</span>未完待续</span>
+    
+        <span class="sidebar-tag-name" data-tags="周彦辰"><span class="iconfont-archer">&#xe606;</span>周彦辰</span>
+    
+        <span class="sidebar-tag-name" data-tags="棠棣之华"><span class="iconfont-archer">&#xe606;</span>棠棣之华</span>
+    
+        <span class="sidebar-tag-name" data-tags="吉光片羽"><span class="iconfont-archer">&#xe606;</span>吉光片羽</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="exp+10"><span class="iconfont-archer">&#xe606;</span>exp+10</span>
+    
+        <span class="sidebar-tag-name" data-tags="R"><span class="iconfont-archer">&#xe606;</span>R</span>
+    
+        <span class="sidebar-tag-name" data-tags="Git"><span class="iconfont-archer">&#xe606;</span>Git</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+        <span class="sidebar-tag-name" data-tags="Viz"><span class="iconfont-archer">&#xe606;</span>Viz</span>
+    
+        <span class="sidebar-tag-name" data-tags="君子欲得自取之"><span class="iconfont-archer">&#xe606;</span>君子欲得自取之</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Afar"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->    
+     
+    </body>
+</html>
+
+
