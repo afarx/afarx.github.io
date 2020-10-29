@@ -14,7 +14,7 @@
 
 
 
-<title>R语言分段线性回归直线拟合与绘图 | AfarX</title>
+<title>R语言使用map函数批量合并数据集 | AfarX</title>
 
 
 
@@ -172,7 +172,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">R语言分段线性回归直线拟合与绘图</h1>
+            <h1 class="post-title">R语言使用map函数批量合并数据集</h1>
             
                 <div class="post-meta">
                     
@@ -181,7 +181,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">July 20, 2018&nbsp;&nbsp;23:40:44</a>
+                        Date: <a href="#">October 29, 2020&nbsp;&nbsp;16:35:44</a>
                         </span>
                     
                     
@@ -190,78 +190,48 @@
         </header>
 
         <div class="post-content">
-            <p>放假了，全统计系可能只有我一个人还在接统计咨询……</p>
-<p>大概他们都不用看演唱会，所以没有为钱所困吧……悲伤……</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>临床上一类文章的套路是 PSM（倾向性评分匹配）- OS/RFS生存分析 - COX回归，通过这种方式比较两种手术方式/治疗方式的好坏。今天接到的统计咨询也是要写一篇这样的文章，但是他提供了一个样图:</p>
-<p><img src="/img/pr1.png" alt="pr1"></p>
-<p>一篇文献中通过绘制该图寻找早期复发与晚期复发的交界点，但是文中并没有具体的做法。</p>
-<p>刚看到觉得，嗯，就是分段函数，应该很好做吧，结果做完感觉天都黑了……所以赶紧记录下来。</p>
+            <p>太久没更新了,让我们更新一下!<br>全篇随心所欲,英语比日语还烂的程度.<br>(咖啡又喝高了)</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>当我们数据分析中产生了一堆中间数据(≥3),需要把他们合并成一个新的Dataset,使用bind_rows需要打一堆(df1,df2,df3,df4….),好麻烦,any simple solution?</p>
 <a id="more"></a>
-<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><h2 id="载入包"><a href="#载入包" class="headerlink" title="载入包"></a>载入包</h2><p>分段函数的英文是piecewise linear regression，用这个英文加上R去Bing搜索，就可以找到问题的解决方案。</p>
-<p>解决方案就是<code>segmented</code>这个包，这个包的描述是:</p>
-<blockquote>
-<p>Given a regression model, segmented “updates” the model by adding one or more segmented (i.e., piece-wise linear) relationships. Several variables with multiple breakpoints are allowed.</p>
-</blockquote>
-<p>就决定是你了！</p>
-<pre><code class="r"># load package
-library(tidyverse) 
-library(segmented)
+<h1 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h1><p>先让我们用mtcars无中生有几个数据集,生成的数据集会在workplace里,用ls()可以看到.</p>
+<pre><code class="r">aa1 &lt;- mtcars[1:3,]
+aa2 &lt;- mtcars[4:6,]
+aa3 &lt;- mtcars[7:9,]
+aa4 &lt;- mtcars[10:32,]
 </code></pre>
-<h2 id="读入文件"><a href="#读入文件" class="headerlink" title="读入文件"></a>读入文件</h2><p>我们读入原始数据，包含每个人的复发距离手术的时间。</p>
-<pre><code class="r"># read
-a &lt;- read.csv(&#39;recur.csv&#39;,header=F)
+<p>然后list这些文件</p>
+<pre><code class="r">temp &lt;- ls(pattern = c(&#39;aa&#39;))  #生成一个文件名list
 </code></pre>
-<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p>我们按照区间长度为3，将数据整理成 【复发时间】【复发人数】 的格式。</p>
-<pre><code class="r"># assign month
-# 整理区间
-a$V3 &lt;- ((a$V2-1)%/%3+1)*3
-
-# assign recurence rate
-# 计数
-b &lt;- a %&gt;% group_by(V3) %&gt;% count(V3)
-
-# 计算复发率
-# total为总人数
-b$freq &lt;- b$n/total*100
+<p>by the way,如果要提取workpalce里全部数据集(但是一般没必要这么丧心病狂吧),we can just do that.</p>
+<pre><code class="r">df &lt;- sapply(.GlobalEnv,is.data.frame)
+alldf &lt;- names(df)[df]
 </code></pre>
-<h2 id="散点图绘制"><a href="#散点图绘制" class="headerlink" title="散点图绘制"></a>散点图绘制</h2><p>绘制常规散点图</p>
-<pre><code class="r"># 指定x，y
-y &lt;- b$freq
-x &lt;- b$V3
-
-# 指定回归模型
-lin.mod &lt;- lm(y~x)
-
-# 绘图
-plot(x,y, pch=1, cex=1.5, #指定点的类型为圆圈，大小1.5
-ylim=c(0,60), #纵轴高度
-xlab = &#39;Time after initial surgery(months)&#39;, #横轴标签
-ylab = &#39;Recurrence(%)&#39; , #纵轴标签
-bty = &#39;l&#39;) #只画纵轴与横轴
+<h1 id="合并方案一"><a href="#合并方案一" class="headerlink" title="合并方案一"></a>合并方案一</h1><p>from 同事 循环语句写起来</p>
+<pre><code class="r">for (i in 2:length(temp)){
+  new.data = get(temp[i])  #使用get提取这个dataset的内容而非&#39;名字的字符串&#39;&#39;
+  merged.data = bind_rows(merge.data,new.data) #bind_rows!
+}
 </code></pre>
-<h2 id="分段回归直线拟合"><a href="#分段回归直线拟合" class="headerlink" title="分段回归直线拟合"></a>分段回归直线拟合</h2><p>在拟合分段回归直线前，需要人为指定Breaking-point，之后程序会根据拟合的直线重新估计，point可以是一个点，多个point可以用<code>psi=list(c(x1,x2))</code>指定。</p>
-<pre><code class="r"># 指定point
-segmented.mod &lt;- segmented(lin.mod, seg.Z = ~x, psi=9)
-
-# 拟合分段回归直线
-plot(segmented.mod, col=&#39;pink&#39;, lwd= 2.5 ,add=T)
+<p>很好,很棒,可以在循环语句里加中中间处理语句,比如修改变量格式一致~<br>坏处就是我写不来循环语句….(My fault)</p>
+<h1 id="合并方案二"><a href="#合并方案二" class="headerlink" title="合并方案二"></a>合并方案二</h1><p>让万能的Hadley大神的purrr包出场解决循环问题</p>
+<pre><code class="r">library(purrr) #载入包
+merged.data &lt;- map_dfr(mget(temp),bind_rows)
 </code></pre>
-<p>拟合之后我们需要得到拟合出的回归直线的基本信息,方法也很简单，使用我们常用<code>summary()</code>就可以得到截断点Breaking point（即我们需要求的分界点），同时可以输出部分截距和斜率信息，不过这个不完全。<br>所以我们可以通过<code>intercept()</code>以及<code>slope()</code>分别求得各段直线的结局与斜率。</p>
-<pre><code class="r"># 
-summary(segmented.mod)
-intercept(segmented.mod)
-slope(segmented.mod)
-</code></pre>
-<h2 id="画出截断直线、标注回归方程"><a href="#画出截断直线、标注回归方程" class="headerlink" title="画出截断直线、标注回归方程"></a>画出截断直线、标注回归方程</h2><p>根据我们上述得到的信息，我们可以标出截断直线，以及各段的回归方程</p>
-<pre><code>abline(v=bp1 lty=2,col=&#39;blue&#39;) # bp1:截断点的值
-text(10, 40, &#39;y = a1+b1x&#39;) # a1,b1：分段1的截距、斜率
-text(20, 10, &#39;y = a2+b2x&#39;) # a2,b2：分段1的截距、斜率
-</code></pre><p>最终我们得到这样的图，也得到了交界点，临床上来说，我们找到了早期复发与晚期复发的分界点。</p>
-<p><img src="/img/pr2.png" alt="pr2"></p>
-<p>大功告成！<br>（我喜欢我的马赛克！）</p>
+<p>使用map循环一句话解决问题!感觉很棒棒!不愧是我们Hadley!</p>
+<p>知识点:</p>
+<ol>
+<li>how to 批量选取数据集(not 批量导入文件)? <code>ls(pattern=)</code></li>
+<li>how to 获得数据集的内容?<code>mget()</code></li>
+<li>how to 批量合并并返回数据框?<code>map_dfr</code></li>
+</ol>
+<hr>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ol>
-<li><a href="https://www.r-bloggers.com/r-for-ecologists-putting-together-a-piecewise-regression/" target="_blank" rel="noopener">R for Ecologists: Putting Together a Piecewise Regression</a></li>
-<li><a href="https://cran.r-project.org/web/packages/segmented/segmented.pdf" target="_blank" rel="noopener">Package ‘segmented’</a></li>
+<li><p>[bind_rows for each result of a function in R]<br>(<a href="https://stackoverflow.com/questions/49581596/bind-rows-for-each-result-of-a-function-in-r" target="_blank" rel="noopener">https://stackoverflow.com/questions/49581596/bind-rows-for-each-result-of-a-function-in-r</a>)</p>
+</li>
+<li><p>[How to rbind all the data.frames in your working environment?]<br>(<a href="https://stackoverflow.com/questions/35387419/how-to-rbind-all-the-data-frames-in-your-working-environment" target="_blank" rel="noopener">https://stackoverflow.com/questions/35387419/how-to-rbind-all-the-data-frames-in-your-working-environment</a>)</p>
+</li>
+<li><p>[R语言中的purrr:map()函数]<br>(<a href="https://blog.csdn.net/qq_18055167/article/details/104437236" target="_blank" rel="noopener">https://blog.csdn.net/qq_18055167/article/details/104437236</a>)</p>
+</li>
 </ol>
 
         </div>
@@ -277,7 +247,7 @@ text(20, 10, &#39;y = a2+b2x&#39;) # a2,b2：分段1的截距、斜率
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://afarx.com/2018/07/20/Piecewise-regression/">http://afarx.com/2018/07/20/Piecewise-regression/</a></span>
+                        <span><a href="http://afarx.com/2020/10/29/map_dfr/">http://afarx.com/2020/10/29/map_dfr/</a></span>
                     </p>
                 
                 
@@ -310,10 +280,8 @@ text(20, 10, &#39;y = a2+b2x&#39;) # a2,b2：分段1的截距、斜率
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/10/29/map_dfr/">R语言使用map函数批量合并数据集</a>
             
-            
-            <a class="next" rel="next" href="/2018/07/14/nlp/">微博词频分析报告</a>
+            <a class="next" rel="next" href="/2018/07/20/Piecewise-regression/">R语言分段线性回归直线拟合与绘图</a>
             
         </section>
            
