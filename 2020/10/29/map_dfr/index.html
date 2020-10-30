@@ -202,7 +202,7 @@ aa4 &lt;- mtcars[10:32,]
 <p>然后list这些文件</p>
 <pre><code class="r">temp &lt;- ls(pattern = c(&#39;aa&#39;))  #生成一个文件名list
 </code></pre>
-<p>by the way,如果要提取workpalce里全部数据集(但是一般没必要这么丧心病狂吧),we can just do that.</p>
+<p>by the way,如果要提取workpalce里全部数据集(why?),we can just do that.</p>
 <pre><code class="r">df &lt;- sapply(.GlobalEnv,is.data.frame)
 alldf &lt;- names(df)[df]
 </code></pre>
@@ -212,7 +212,7 @@ alldf &lt;- names(df)[df]
   merged.data = bind_rows(merge.data,new.data) #bind_rows!
 }
 </code></pre>
-<p>很好,很棒,可以在循环语句里加中中间处理语句,比如修改变量格式一致~<br>坏处就是我写不来循环语句….(My fault)</p>
+<p>很好,很棒,可以在循环语句里加中中间处理语句,比如修改变量格式一致~<br>坏处就是我写不来循环语句….</p>
 <h1 id="合并方案二"><a href="#合并方案二" class="headerlink" title="合并方案二"></a>合并方案二</h1><p>让万能的Hadley大神的purrr包出场解决循环问题</p>
 <pre><code class="r">library(purrr) #载入包
 merged.data &lt;- map_dfr(mget(temp),bind_rows)
@@ -226,11 +226,11 @@ merged.data &lt;- map_dfr(mget(temp),bind_rows)
 </ol>
 <hr>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ol>
-<li><p>[bind_rows for each result of a function in R]<br>(<a href="https://stackoverflow.com/questions/49581596/bind-rows-for-each-result-of-a-function-in-r" target="_blank" rel="noopener">https://stackoverflow.com/questions/49581596/bind-rows-for-each-result-of-a-function-in-r</a>)</p>
+<li><p><a href="https://stackoverflow.com/questions/49581596/bind-rows-for-each-result-of-a-function-in-r" target="_blank" rel="noopener">bind_rows for each result of a function in R</a></p>
 </li>
-<li><p>[How to rbind all the data.frames in your working environment?]<br>(<a href="https://stackoverflow.com/questions/35387419/how-to-rbind-all-the-data-frames-in-your-working-environment" target="_blank" rel="noopener">https://stackoverflow.com/questions/35387419/how-to-rbind-all-the-data-frames-in-your-working-environment</a>)</p>
+<li><p><a href="https://stackoverflow.com/questions/35387419/how-to-rbind-all-the-data-frames-in-your-working-environment" target="_blank" rel="noopener">How to rbind all the data.frames in your working environment?</a></p>
 </li>
-<li><p>[R语言中的purrr:map()函数]<br>(<a href="https://blog.csdn.net/qq_18055167/article/details/104437236" target="_blank" rel="noopener">https://blog.csdn.net/qq_18055167/article/details/104437236</a>)</p>
+<li><p><a href="https://blog.csdn.net/qq_18055167/article/details/104437236" target="_blank" rel="noopener">R语言中的purrr:map()函数</a></p>
 </li>
 </ol>
 
